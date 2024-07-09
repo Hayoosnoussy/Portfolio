@@ -1,0 +1,24 @@
+pipeline {
+
+    agent any
+
+    parameters {
+        string(name: 'APP_CONFIG_BASE_URL', defaultValue: 'https://kong.dev.parking.scheidt-bachmann.net/appconfig-service/v1', description: 'App Config Base URL')
+        string(name: 'APP_CONFIG_APP_ID', defaultValue: '13', description: 'App Config App ID')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Build your project
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    sh "mvn clean package -DappConfigBaseUrl=${params.APP_CONFIG_BASE_URL} -DappConfigAppId=${params.APP_CONFIG_APP_ID}"
+                }
+            }
+        }
+    }
+}

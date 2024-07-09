@@ -1,0 +1,17 @@
+.openapi-generator-ignore
+README.md
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/api/ApiUtil.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/api/BookingTransactionsApi.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/api/GetTransactionsApi.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/api/VersionApi.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/BackofficeKafkaDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/BookingDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/BookingKafkaDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/BookingWSDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/ErrorCodeDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/RequestDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/ResponseCodeDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/TransactionKafkaDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/TransactionWSDataDTO.java
+com/scheidtbachmann/phfa/digitalproduct/zrconnector/model/VersionDTO.java
+pom.xml

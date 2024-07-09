@@ -1,0 +1,193 @@
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <style type="text/css" media="all">
+        .container-page {
+            padding-bottom: 20px;
+        }
+        .img-logo {
+            text-align: right ;
+        }
+        .img-logo img {
+
+            width: 1.1in;
+            height: 0.8in;
+        }
+        .header-container {
+            display: flex;
+            width: 100%;
+        }
+        .box-container {
+
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .box-header {
+
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .title-box {
+            display: flex;
+        }
+        .title-box .text-yello {
+
+            margin-right: 33px;
+        }
+        .text-yello {
+            font-weight: bold;
+            font-size: 12pt;
+            font-family: Verdana, sans-serif;
+            color: #fccd13;
+            text-transform: uppercase;
+        }
+        .text-grey {
+
+            font-weight: bold;
+            font-size: 11pt;
+            font-family: Verdana, sans-serif;
+            color: #929292;
+        }
+        .subtitle-box {
+
+            font-style: normal;
+            font-weight: bold;
+            font-size: 8pt;
+            font-family: Arial, sans-serif;
+            color: #231f20;
+        }
+        .text-box {
+
+            font-style: normal;
+            font-weight: normal;
+            font-size: 8pt;
+            font-family: Verdana, sans-serif;
+            color: #808285;
+        }
+        .mt-6 {
+            margin-top: 6px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+        .table, tbody {
+
+            width: 100%;
+        }
+        .thead {
+            text-align: left;
+            background: #fbc310;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 9pt;
+            font-family: Verdana, sans-serif;
+            color: #ffffff;
+        }
+        .thead-grey {
+            background: #999999 !important;
+        }
+        th {
+            padding: 7px;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+        }
+        td {
+            vertical-align: baseline;
+            border: 1px solid black;
+            padding-left: 7px;
+            padding-right: 7px;
+        }
+        .no-border-top {
+            border-top: none;
+        }
+        .no-border-bottom {
+            border-bottom: none;
+        }
+        .line-table {
+
+            /*display: flex;*/
+            /*justify-content: space-between;*/
+            display: inline-block;
+            width: 100%;
+            margin: 2px 0;
+        }
+        .text-right {
+            text-align:right !important;
+        }
+        .line-box {
+            width: 50%;
+            float: left
+        }
+        .line-boxright {
+            width: 50%;
+            float: right;
+        }
+        .line-dashed {
+
+            width: 100%;
+            border-top: 2px dashed #a4a5a7;
+
+        }
+        .subtitle-span {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 8pt;
+            font-family: Calibri, sans-serif;
+            color: #939393;
+            margin: 0 28px 0 18px;
+        }
+        .subtitle-span-img {
+            /*width: 0.29in;*/
+            height: 0.22in;
+        }
+
+        .footer {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .footer > div {
+            display: table-cell;
+            vertical-align: top;
+            padding-right: 20px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 8pt;
+            font-family: Verdana, sans-serif;
+            color: #000000;
+        }
+
+        .footer-order-1 {
+            width: 28%;
+        }
+        .footer-order-2 {
+            width: 30%;
+        }
+
+        .footer-order-3 {
+            width: 42%;
+            text-align: right;
+        }
+
+        .footer-logo img {
+            width: 2.27in;
+            height: 0.29in;
+        }
+
+    </style>
+</head>
+<body style="height:100% !important;width:100% !important;margin: auto !important;">
+<div class="container-page" style="padding-bottom: 20px !important;">
+    {% if(operatorLogo!='') %}
+        <div class="img-logo" style="text-align: right !important;margin-bottom: 8px">
+            <img src="{{ ('data:image/png;base64,'~operatorLogo) }}" alt="" style="width: auto;height: 0.8in;" />
+        </div>
+    {% endif %}

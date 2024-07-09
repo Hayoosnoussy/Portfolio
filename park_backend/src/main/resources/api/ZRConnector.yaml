@@ -1,0 +1,699 @@
+openapi: 3.0.3
+info:
+  description: ZRConnector, backend services for digital products smart web pay
+  version: 0.1.6
+  title: ZRConnector backend service
+  contact:
+    email: sbcheckout@scheidt-bachmann.sk
+  license:
+    name: COMMERCIAL
+    url: 'https://www.scheidt-bachmann.com'
+servers:
+  - url: 'http://kong.dev.parking.scheidt-bachmann.net/zrconnector-service/{version}'
+    description: dev server
+    variables:
+      version:
+        description: Version of API is set by the service provider
+        enum:
+          - v1
+        default: v1
+
+tags:
+  - name: Version
+    description: Version of service
+  - name: GetTransactions
+    description: request for get transaction for thhis medium
+
+paths:
+  '/version':
+    get:
+      tags:
+        - Version
+      summary: Provide version of service
+      operationId: getVersion
+      parameters:
+        - name: correlationId
+          in: header
+          required: false
+          schema:
+            type: string
+            example: "10203"
+        - name: X-SampB-SelfCheckout-App
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "SampB-SelfCheckout-2022"
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+        '401':
+          description: NOT authorized !!!
+        default:
+          description: ERROR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+
+  '/getTransactions':
+    put:
+      tags:
+        - CheckTransactions
+      summary: get active transactions (@Asyn) (Check present data + late payments transactions of same operator)
+      operationId: checkTransactionsPUT
+      parameters:
+        - name: correlationId
+          in: header
+          required: false
+          schema:
+            type: string
+            example: "10203"
+        - name: X-SampB-SelfCheckout-App
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "SampB-SelfCheckout-2022"
+      requestBody:
+        $ref: '#/components/requestBodies/RequestData'
+      responses:
+        '202':
+          description: "successful operation, response data is. The result of request will be provided via websocket and Kafka message"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+        '400':
+          description: "BAD Request!!!"
+        '401':
+          description: "NOT authorized !!!"
+        default:
+          description: ERROR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+
+  '/bookingTransactions':
+    put:
+      tags:
+        - BookingTransactions
+      summary: booking of the transaction
+      operationId: bookingTransactionsPUT
+      parameters:
+        - name: correlationId
+          in: header
+          required: false
+          schema:
+            type: string
+            example: "10203"
+        - name: X-SampB-SelfCheckout-App
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "SampB-SelfCheckout-2022"
+      requestBody:
+        $ref: '#/components/requestBodies/BookingData'
+      responses:
+        '202':
+          description: "successful operation, response data is. The result of request will be provided via websocket and Kafka message"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+        '400':
+          description: "BAD Request!!!"
+        '401':
+          description: "NOT authorized !!!"
+        default:
+          description: ERROR
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+
+components:
+  requestBodies:
+    RequestData:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RequestData'
+      required: true
+    BookingData:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookingData'
+      required: true
+
+  schemas:
+    Version:
+      type: object
+      properties:
+        service-version:
+          type: string
+          default: 1.0.0
+        interface-version:
+          type: string
+          default: 0.1.6
+
+    RequestData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: "unique request/client id of the request/client"
+          example: "1234-12asd-fdfsc"
+        mediumType:
+          type: string
+          description: "type of medium, allowed types: barcode, lpn. Default is barcode"
+          default: "barcode"
+          example: "lpn"
+        mediumValue:
+          type: string
+          description: "medium value, lpn or barcode"
+          default: ""
+          example: "MG-123SB"
+        licensePlate:
+          type: string
+          description: "license plate for late paymnet, if is empty, chceck the license plate from barcode in mediumValue (MVP 2.3)"
+          default: ""
+          example: "MG-123SB"
+        present:
+          type: array
+          description: "list of car parks for check present transactions"
+          items:
+            $ref: '#/components/schemas/CarParkItem'
+        latePayments:
+          type: array
+          description: "list of car parks for check late payment transactions"
+          items:
+            $ref: '#/components/schemas/CarParkItem'
+
+    CarParkItem:
+      type: string
+      description: "key of car park in format operatorId@cellComputerId as string"
+      example: "40212@4021"
+
+    BookingData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: "unique request/client id of the request/client"
+          example: "1234-12asd-fdfsc"
+        mediaType:
+          type: string
+          description: "type of payment medium"
+          example: "VISA"
+        payId:
+          type: string
+          description: "Id of payment transaction from PGS"
+          example: "C-4f7ee476-1224-49f2-9b33-73173904e13e"
+        mediumType:
+          type: string
+          description: "type of medium, allowed types: barcode, lpn. Default is barcode"
+          default: "barcode"
+          example: "lpn"
+        mediumValue:
+          type: string
+          description: "medium value, lpn or barcode"
+          default: ""
+          example: "MG-123SB"
+        transactions:
+          type: array
+          description: "list of transactionsIds for booking"
+          items:
+            $ref: '#/components/schemas/BookingItem'
+
+    BookingItem:
+      type: string
+      description: "transactionId for booking"
+      example: "132213232132"
+
+    ResponseCode:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: a human-readable message indicated the cause of a failure
+          example: text message of the action/error
+        timeStamp:
+          type: string
+          description: time stamp of error code
+          example: '2021-08-23T16:08:27.000[GMT]'
+
+    ErrorCode:
+      type: string
+      description: "Unique error code of transaction"
+      enum:
+        - NO_ERROR
+        - NO_DATA
+        - ERR_GENERAL
+        - ERR_BAD_DATA
+        - ERR_NORESOURCE_FOUND
+      example: ERROR_CODE
+
+    TransactionKafkaData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: "unique request/client id of the request/client"
+          example: "1234-12asd-fdfsc"
+        transactionId:
+          type: string
+          description: "unique transactionId"
+          example: "1234-12asd-fdfsc"
+        mediumType:
+          type: string
+          description: "type of medium, allowed types: barcode, lpn, mobileid. Default is barcode"
+          default: "barcode"
+          example: "lpn"
+        mediumValue:
+          type: string
+          description: "medium"
+          default: ""
+          example: "MG-123SB"
+        licensePlate:
+          type: string
+          description: "associated lpn medium in case mediumType is barcode as input medium"
+          default: ""
+          example: "MG-123SB"
+        transactionType:
+          type: string
+          description: "type of transaction, allowed types: present, latePayment"
+          example: "present"
+        epan:
+          description: "epan of the transaction"
+          type: string
+          example: "2112"
+        operator:
+          description: "operator id"
+          type: integer
+          format: int32
+        operatorName:
+          description: "operator name"
+          type: string
+          example: "test operator"
+        cellComputer:
+          description: "cell computer id"
+          type: integer
+          format: int32
+        facilityId:
+          description: "facilityId on cell computer field13"
+          type: string
+          example: "2112"
+        amount:
+          description: "the amount due (NET + VAT) calculated by entervo, with discounts"
+          type: string
+          example: "1500"
+        currency:
+          description: "the currency key to be used by the 3rd party application (driven by entervo configuration)"
+          type: string
+          example: EUR
+        duration:
+          description: "duration of the parking transaction (days-hours-minutes)"
+          type: string
+          example: "00-02-14"
+        tariffTimeStart:
+          type: string
+          example: '2020-06-16T14:04:53.000+01:00'
+        tariffTimeEnd:
+          type: string
+          example: '2020-06-16T14:27:16.000+01:00'
+        tenant:
+          description: "tenant name of merchant"
+          type: string
+          example: "pgs-testPayVision"
+        vatType:
+          description: "vat type of the transaction"
+          type: string
+          example: "A"
+        vatValue:
+          description: "vat value of the transaction"
+          type: string
+          example: "20"
+
+    BackofficeKafkaData:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: "unique transactionId"
+          example: "1234-12asd-fdfsc"
+        appId:
+          type: integer
+          description: "Id of application"
+          example: "123"
+        mediumType:
+          type: string
+          description: "type of medium, allowed types: barcode, lpn, mobileid. Default is barcode"
+          default: ""
+          example: "lpn"
+        mediumValue:
+          type: string
+          description: "medium"
+          default: ""
+          example: "MG-123SB"
+        type:
+          type: string
+          description: "type of transaction, allowed types: present, late"
+          example: "late"
+        status:
+          type: string
+          description: "status of transaction, can be for booked or just checked"
+          example: "found, notfound, failed, success"
+        epan:
+          description: "epan of the transaction"
+          type: string
+          example: "2112"
+        operatorId:
+          description: "operator id"
+          type: integer
+          format: int32
+        cellComputerId:
+          description: "cell computer id"
+          type: integer
+          format: int32
+        amount:
+          description: "the total amount due (NET + VAT) calculated by entervo"
+          type: string
+          example: "1500"
+        currency:
+          description: "the currency key to be used by the 3rd party application (driven by entervo configuration)"
+          type: string
+          example: EUR
+        currencyDecimal:
+          description: "count of decimal for currency"
+          type: integer
+          format: int32
+          example: "2"
+        vatType:
+          description: "vat type of the transaction"
+          type: string
+          example: "A"
+        vatValue:
+          description: "vat value of the transaction"
+          type: string
+          example: "20"
+        receiptNumber:
+          type: string
+          description: "unique receiptNumber"
+          example: "1234-12asd-fdfsc"
+        entervoBookingId:
+          type: string
+          description: "unique booking Id from cell"
+          example: "1234"
+        paymentType:
+          type: string
+          description: "type of payment"
+          example: "VISA"
+
+    TransactionWSData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: "unique request/client id of the request/client"
+          example: "1234-12asd-fdfsc"
+        transactionId:
+          type: string
+          description: "unique transactionId"
+          example: "1234-12asd-fdfsc"
+        mediumType:
+          type: string
+          description: "type of medium, allowed types: barcode, lpn, mobileid. Default is barcode"
+          default: "barcode"
+          example: "lpn"
+        mediumValue:
+          type: string
+          description: "medium"
+          default: ""
+          example: "MG-123SB"
+        licensePlate:
+          type: string
+          description: "associated lpn medium in case mediumType is barcode as input medium"
+          default: ""
+          example: "MG-123SB"
+        transactionType:
+          type: string
+          description: "type of transaction, allowed types: present, latePayment"
+          example: "present"
+        operator:
+          description: "operator id"
+          type: integer
+          format: int32
+        operatorName:
+          description: "operator name"
+          type: string
+          example: "test operator"
+        cellComputer:
+          description: "cell computer id"
+          type: integer
+          format: int32
+        carParkAddress:
+          description: "Car park Address, (field5)"
+          type: string
+          example: "Breitestrasse . 7a 40468, MG"
+        carParkName:
+          description: "Name of car park / facility"
+          type: string
+          example: "Big Car park House"
+        carParkLocale:
+          description: "car park Locale"
+          type: string
+          example: "de_DE"
+        amount:
+          description: "the amount due (NET + VAT) calculated by entervo, with discounts"
+          type: string
+          example: "1500"
+        currency:
+          description: "the currency key to be used by the 3rd party application (driven by entervo configuration)"
+          type: string
+          example: EUR
+        currencyDecimal:
+          description: "count of decimal for currency"
+          type: integer
+          format: int32
+          example: "2"
+        duration:
+          description: "duration of the parking transaction (days-hours-minutes)"
+          type: string
+          example: "00-02-14"
+        tariffTimeStart:
+          type: string
+          example: '2020-06-16T14:04:53.000+01:00'
+        tariffTimeEnd:
+          type: string
+          example: '2020-06-16T14:27:16.000+01:00'
+        tenant:
+          description: "tenant name of merchant"
+          type: string
+          example: "pgs-testPayVision"
+
+    BookingKafkaData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: "unique request/client id of the request/client"
+          example: "1234-12asd-fdfsc"
+        transactionId:
+          type: string
+          description: "unique transactionId"
+          example: "1234-12asd-fdfsc"
+        status:
+          type: string
+          description: "status of the booking (failed, success, refunded)"
+          example: "success"
+        bookingId:
+          type: string
+          description: "unique booking Id from cell"
+          example: "1234"
+        receiptNumber:
+          type: string
+          description: "unique receiptNumber"
+          example: "1234-12asd-fdfsc"
+        date:
+          type: string
+          description: "date of booking"
+          example: "2022-05-26 15:31:31"
+        vatType:
+          description: "vat type of the transaction"
+          type: string
+          example: "A"
+        vatValue:
+          description: "vat value of the transaction"
+          type: string
+          example: "20"
+        message:
+          type: string
+          description: "message of the booking"
+          example: "boking successfully"
+        amount:
+          description: "the total amount due (NET + VAT) calculated by entervo, with discount"
+          type: string
+          example: "1500"
+        originalAmount:
+          description: "the total amount due (NET + VAT) calculated by entervo"
+          type: string
+          example: "2000"
+        articleRef:
+          description: "id of paid article"
+          type: string
+          example: "10014"
+        articleShortText:
+          type: string
+          example: "Late P. Shortterm"
+#        articles:
+#          type: array
+#          description: "array of articles, which consist of vats, discounts and more"
+#          items:
+#            $ref: '#/components/schemas/Article'
+
+    BookingWSData:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: "unique request/client id of the request/client"
+          example: "1234-12asd-fdfsc"
+        transactionId:
+          type: string
+          description: "unique transactionId"
+          example: "1234-12asd-fdfsc"
+        status:
+          type: string
+          description: "status of the booking (failed, success, refunded)"
+          example: "success"
+        carParkName:
+          description: "Name of car park / facility"
+          type: string
+          example: "Big Car park House"
+        carParkLocale:
+          description: "car park Locale"
+          type: string
+          example: "de_DE"
+        operatorAddress:
+          description: "Car park operator Address"
+          type: string
+          example: "Breitestrasse . 7a 40468, MG"
+        amount:
+          description: "the total amount due (NET + VAT) calculated by entervo, with discount"
+          type: string
+          example: "1500"
+        currency:
+          description: "the currency key to be used by the 3rd party application (driven by entervo configuration)"
+          type: string
+          example: EUR
+        currencyDecimal:
+          description: "count of decimal for currency"
+          type: integer
+          format: int32
+          example: "2"
+        duration:
+          description: "duration of the parking transaction (days-hours-minutes)"
+          type: string
+          example: "00-02-14"
+        tariffTimeStart:
+          type: string
+          example: '2020-06-16T14:04:53.000+01:00'
+        tariffTimeEnd:
+          type: string
+          example: '2020-06-16T14:27:16.000+01:00'
+        articleShortText:
+          type: string
+          example: "Late P. Shortterm"
+        message:
+          type: string
+          description: "message of the booking"
+          example: "boking successfully"
+        mediumType:
+          description: "the medium type"
+          type: string
+        mediumValue:
+          description: "the medium value"
+          type: string
+        #mediaType:
+        #  description: "the payment media VISA/MASTERCARD/...."
+        #  type: string
+
+#    Article:
+#      type: object
+#      properties:
+#        artClassRef:
+#          description: "class reference for article"
+#          type: string
+#        articleRef:
+#          description: "article reference"
+#          type: string
+#        quantity:
+#          description: "number of uses"
+#          type: integer
+#        quantityExp:
+#          description: "number of uses"
+#          type: integer
+#        amount:
+#          description: "amount of discount or price"
+#          type: string
+#        articleShortName:
+#          description: "short name of the article"
+#          type: string
+#        articleLongName:
+#          description: "long name of the article"
+#          type: string
+#        cardInfos:
+#          description: "all card infos"
+#          type: array
+#          items:
+#            $ref: '#/components/schemas/CardInfo'
+#
+#    CardInfo:
+#      type: object
+#      properties:
+#        transType:
+#          type: integer
+#        transMark:
+#          type: integer
+#        facility:
+#          type: integer
+#        epan:
+#          type: string
+#        cardType:
+#          type: integer
+#        cardSubType:
+#          type: integer
+#        cardClass:
+#          type: integer
+#        tariffTimeStart:
+#          type: string
+#        tariffTimeEnd:
+#          type: string
+#        moneyValue:
+#          type: string
+#        pointValue:
+#          type: integer
+#        timeValue:
+#          type: string
+#        expireDate:
+#          type: string
+#        paymentCounter:
+#          type: integer
+#        wkDayProgRef:
+#          type: integer
+#        meetingNumber:
+#          type: integer
