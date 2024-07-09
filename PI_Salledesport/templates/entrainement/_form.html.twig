@@ -1,0 +1,19 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{{ form_start(form) }}
+<table>
+    <tr>
+        <td>Titre</td>
+        <td>  {{ form_widget(form.titre) }}</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>  {{ form_widget(form.type) }}</td>
+    </tr>
+    <tr>
+        <td>Lien</td>
+        <td>  {{ form_widget(form.meet) }}</td>
+    </tr>
+</table>
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

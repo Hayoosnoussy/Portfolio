@@ -1,0 +1,13 @@
+{% extends 'base_front_forum.html.twig' %}
+
+{% block title %}Ajout publication{% endblock %}
+
+{% block body %}
+    <div align="center">
+    <h1>Ajout publication</h1>
+    <br/>
+    {{ include('post/_form.html.twig') }}
+        <br/><br/>
+    <a href="{{ path('post_index') }}" class="btn btn-success">Retour à la liste</a>
+    </div>
+{% endblock %}

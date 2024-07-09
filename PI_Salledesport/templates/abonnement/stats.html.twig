@@ -1,0 +1,86 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Liste abonnement{% endblock %}
+
+{% block body %}
+    <h1>Statistque des abonnements</h1>
+
+    <style>
+        .chartjs-wrapper canvas {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <script src="{{ asset('theme_backend/js/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('theme_backend/js/chartjs-plugin-deferred.js') }}"></script>
+    <br/>
+    <p>
+    <h2 style="margin-left: 200px">Abonnements nutrition</h2>
+    <div class="chartjs-wrapper">
+        <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
+        <script>
+            new Chart(document.getElementById("chartjs-4"),
+                {"type":"doughnut","data":
+                        {"labels":["1 Mois", "3 Mois", "6 Mois", "12 Mois"],"datasets":[
+                                {"label":"My First Dataset","data":[{{ abonnementNutritionStats[1] }}, {{ abonnementNutritionStats[3] }}, {{ abonnementNutritionStats[6] }}, {{ abonnementNutritionStats[12] }}],"backgroundColor":
+                                        ["rgb(255, 99, 132)","rgb(54,162,235)","rgb(255, 205, 86)", "rgb(60, 179, 113)"]
+                                }]
+                        }
+                });
+        </script>
+    </div>
+    </p>
+    <br/>
+    <p>
+    <h2 style="margin-left: 200px">Abonnements Fitness</h2>
+    <div class="chartjs-wrapper">
+        <canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
+        <script>
+            new Chart(document.getElementById("chartjs-1"),
+                {"type":"doughnut","data":
+                        {"labels":["1 Mois", "6 Mois", "12 Mois"],"datasets":[
+                                {"label":"My First Dataset","data":[{{ abonnementFitnessStats[1] }}, {{ abonnementFitnessStats[6] }}, {{ abonnementFitnessStats[12] }}],"backgroundColor":
+                                        ["rgb(60, 179, 113)","rgb(255, 205, 86)","rgb(54, 162, 235)"]
+                                }]
+                        }
+                });
+        </script>
+    </div>
+    </p>
+    <br/>
+    <p>
+    <h2 style="margin-left: 200px">Abonnements Natation</h2>
+    <div class="chartjs-wrapper">
+        <canvas id="chartjs-2" class="chartjs" width="undefined" height="undefined"></canvas>
+        <script>
+            new Chart(document.getElementById("chartjs-2"),
+                {"type":"doughnut","data":
+                        {"labels":["1 Mois", "6 Mois", "12 Mois"],"datasets":[
+                                {"label":"My First Dataset","data":[{{ abonnementNatationStats[1] }}, {{ abonnementNatationStats[6] }}, {{ abonnementNatationStats[12] }}],"backgroundColor":
+                                        ["rgb(54, 162, 235)","rgb(255, 99, 132)","rgb(255, 205, 86)"]
+                                }]
+                        }
+                });
+        </script>
+    </div>
+    </p>
+    <br/>
+    <p>
+    <h2 style="margin-left: 200px">Abonnements Workout</h2>
+    <div class="chartjs-wrapper">
+        <canvas id="chartjs-3" class="chartjs" width="undefined" height="undefined"></canvas>
+        <script>
+            new Chart(document.getElementById("chartjs-3"),
+                {"type":"doughnut","data":
+                        {"labels":["1 Mois", "6 Mois", "12 Mois"],"datasets":[
+                                {"label":"My First Dataset","data":[{{ abonnementWorkoutStats[1] }}, {{ abonnementWorkoutStats[6] }}, {{ abonnementWorkoutStats[12] }}],"backgroundColor":
+                                        ["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]
+                                }]
+                        }
+                });
+        </script>
+    </div>
+    </p>
+{% endblock %}

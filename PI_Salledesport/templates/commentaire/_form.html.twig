@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+
+<table>
+    <tr>
+        <td>Description</td>
+        <td>{{ form_widget(form.description) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><button class="btn">{{ button_label|default('Publier') }}</button></td>
+    </tr>
+</table>
+{{ form_end(form) }}

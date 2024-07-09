@@ -1,0 +1,254 @@
+    <script src="https://e-cdns-files.dzcdn.net/cache/js/runtime.bf05958ae1f01429a25e.js"></script>
+    <script src="https://e-cdns-files.dzcdn.net/cache/js/legacy.36019d532e03e34c48f7.js"></script>
+    <script src="https://e-cdns-files.dzcdn.net/cache/js/bocal-fr-FR.a649ca436cca5fa7baf8.js" defer="true"></script>
+    <script src="https://e-cdns-files.dzcdn.net/cache/js/app-developers.cbfae8555e3a3caa3f78.js" defer="true"></script><script type="text/javascript" src="https://e-cdns-files.dzcdn.net/js/min/dz-v00401434.js" defer="true"></script>
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="aa581cdf-0356-4bb1-9574-4ae8665abdb9" type="text/javascript" async></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+</head>
+<body>
+<div id="dz-root" ></div>
+<script type="text/javascript">
+    facebook.shouldGetStatus(false);
+</script>
+<div id="developers" class="container" style="margin-top:70px;">
+    <div class="row">
+        <div id="content" class="span9">
+
+
+            <!-- HTML EDITABLE -->
+            <script type="text/javascript">
+                var handleTabs = function (containerId) {
+
+                    document.querySelectorAll('#' + containerId + ' .tab').forEach(function (elem) {
+                        elem.setAttribute('style', 'display: none;')
+                    });
+
+                    document.querySelectorAll('#' + containerId + ' ul.menu li a').forEach(function (el) {
+                        el.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            document.querySelectorAll('#' + containerId + ' ul.menu li').forEach(function (elem) {
+                                elem.classList.remove('selected');
+                            });
+                            document.querySelectorAll('#' + containerId + ' .tab').forEach(function (elem) {
+                                elem.setAttribute('style', 'display: none;')
+                            });
+                            document.querySelectorAll(el.getAttribute('href')).forEach(function (elem) {
+                                elem.setAttribute('style', 'display: block;')
+                            });
+                            e.currentTarget.parentNode.classList.add('selected');
+                            if (typeof e.currentTarget.getAttribute('type') !== 'undefined') {
+                                var type = e.currentTarget.getAttribute('type');
+                                var type_saved = e.currentTarget.value;
+                                if (type === 'radio' && type_saved === 'sradio') {
+                                    type = type_saved;
+                                }
+                                document.getElementById('type').value = type;
+                                dzmusicplugin.pluginUpdateParam('player', e.currentTarget);
+                            }
+                        });
+                    });
+
+                };
+
+                var updateColorpicker = function (hex) {
+                    var target = document.getElementById('plugin_color');
+                    target.setAttribute('style', 'color:' + hex + ';');
+                    target.value = hex;
+
+                    dzmusicplugin.pluginUpdateParam('player', target);
+                    return true;
+                };
+
+                var initPage = function () {
+
+                    // First we check if the externalizedScript var in window global object is here.
+                    // It will define if the below code is in slash or not, to avoid breaks in production
+                    if(typeof window.externalizedScript !== 'undefined'){
+                        return false;
+                    }
+
+                    document.querySelectorAll('#searchboxalbum input.search_input').forEach(function(elem) {
+                        elem.addEventListener('keyup', function (e) {
+                            return searchtool.onKeyUp(e, 'album');
+                        });
+                    });
+
+                    document.querySelectorAll('#searchboxsmart input.search_input').forEach(function (elem) {
+                        elem.addEventListener('keyup', function (e) {
+                            return searchtool.onKeyUp(e, 'artist');
+                        });
+                    });
+
+                    document.querySelectorAll('#widget-options input[type=text], ul.generator input[type=text]').forEach(function (elem) {
+                        elem.addEventListener('keyup', function (e) {
+                            if (e.keyCode === 13) {
+                                /* Enter key */
+                                dzmusicplugin.pluginUpdateParam('player', e);
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('#widget-options select').forEach(function (elem) {
+                        elem.addEventListener('change', function(e){
+                            document.getElementById('id_application').value = '';
+                            if(e.currentTarget.value !== ''){
+                                document.getElementById('id_application').value = '';
+                                dzmusicplugin.pluginUpdateParam('player', e.currentTarget);
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('.js-selectchange-update-widget').forEach(function (elem) {
+                        elem.addEventListener('change', function (e) {
+                            if(e.currentTarget.value !== ''){
+                                e.currentTarget.closest('.tab').querySelector('.js-selectchange-data-target').value = e.currentTarget.value;
+                                dzmusicplugin.pluginUpdateParam('player', e.currentTarget);
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('.form-select').forEach(function (elem) {
+                        elem.addEventListener('change', function (e) {
+                            dzmusicplugin.pluginUpdateParam('player', e.currentTarget);
+                        })
+                    });
+
+                    document.querySelectorAll('.js-blur-update-widget').forEach(function (elem) {
+                        elem.addEventListener('blur', function (e) {
+                            dzmusicplugin.pluginUpdateParam('player', e.currentTarget);
+                        });
+                    });
+
+                    document.querySelectorAll('.js-click-update-widget').forEach(function (elem) {
+                        elem.addEventListener('click', function (e) {
+                            // Prevent default only if not radio button
+                            if(e.currentTarget.type !== 'radio'){
+                                e.preventDefault();
+                            }
+                            dzmusicplugin.pluginUpdateParam('player', e.currentTarget);
+                        });
+                    });
+
+                    handleTabs('widget-tabs');
+                    handleTabs('widget-generated-code');
+
+
+                    document.getElementById('tabs-code-iframe').setAttribute('style', 'display: block;');
+                    var defaultTab = document.getElementById('tabs-playlist');
+                    defaultTab.setAttribute('style', 'display: block;');
+                    dzmusicplugin.pluginUpdateParam('player', defaultTab);
+
+                    var picker = new CP(document.querySelector('#colorpicker .btn'));
+                    picker.on("change", function (color) {
+                        updateColorpicker('#' + color);
+                    });
+                    document.addEventListener('click', function (e) {
+                        if (!e.target.matches('.color-picker, .color-picker *, #colorpicker .btn, #colorpicker .btn *')) {
+                            e.stopPropagation();
+                            picker.exit();
+                        }
+                    });
+
+                    var default_ids = document.getElementById('content_api').getAttribute('data-default-ids');
+                };
+
+                if (document.readyState === 'complete' || (document.readyState !== 'loading' && !document.documentElement.doScroll)) {
+                    initPage();
+                } else {
+                    document.addEventListener('DOMContentLoaded',initPage);
+                }
+            </script>
+            <div id="content_api" class="widget_page drop-shadow lifted">
+                <section id="main_api" role="navigation">
+                    <div class="options">
+                        <h6 style="color: white">Choisissez la musique que vous souhaitez écouter :</h6>
+                        <input type="hidden" id="type" value="playlist"/>
+                        <br id="widget-tabs">
+                            <!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+                        </br>
+                                        <div class="floatl">
+                                            <div id="searchboxalbum" class="searchBox floatl">
+                                                <div class="searchDiv">
+                                                    <input type="text" value="Musique" class="search_input" type-page="player" id-result-input="id_album" id-search-result="search_results_album" style="width: 300px;" />
+                                                </div>
+
+                                                <div id="search_results_album" class="suggest_box">
+                                                    <ul class="suggest_results">
+                                                        <dl class="suggest_result_element suggest_result_default tpl" style="display:none;"><dd class='display'>DISPLAY</dd></dl>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clr"></div>
+
+                                        <div class="floatl pt_20">
+                                            <a type="text" id="id_album" class="js-blur-update-widget js-selectchange-data-target" value="119606" style="width:100px;" />
+                                        </div>
+                                </ul>
+                            </div>
+
+                            <!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                            <!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                            <!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                        </div>
+ <!-----------------classsssssssssssssss ---------------------------------------------------------------
+
+                    <div class="generator_left" style="width:160px;margin:0;">
+                        <div class="generator-block-title">Format</div>
+
+                        <div id="format_chooser">
+                            <a href="#" id="classic" btn-type="format" class="choose_mode js-click-update-widget">
+                                <div class="mockup classic sprite_widget_format"></div>
+                                Classic
+                            </a>
+                            <br />
+                            <a href="#" id="square" btn-type="format" class="choose_mode js-click-update-widget">
+                                <div class="mockup square sprite_widget_format" ></div>
+                                Square
+                            </a>
+                                                              ---------->
+                            <input type="hidden" id="plugin_format" value="square"/>
+
+<!-------------------theme--------------------------------------------------------------------------
+                        <div class="generator-line">
+                            <span>Theme</span>
+                            <select id="plugin_theme" class="form-select"onch style="width:83px; margin-left: 22px;">
+                                <option value="" >light</option>
+                                <option value="dark" SELECTED>dark</option>
+                            </select>
+                        </div>
+       ---------------->
+                        <input type="hidden" id="square" class="choose_mode js-click-update-widget" value="square"/>
+                    </div>
+                        <div class="generator-line">
+                            <div id="colorpicker" class="color" data-color="#EF5466" data-color-format="hex">
+                                <a id="plugin_color">
+                            </div>
+                        </div>
+            </br>
+
+            <iframe id="dzplayer" dztype="dzplayer" scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=square&autoplay=false&playlist=false&width=300&height=300&color=EF5466&layout=&size=medium&type=album&id=182945992" width="300" height="300"></iframe>
+                        <div class="clr"></div>
+
+                        <div class="clr"></div>
+
+                </section>
+            </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+<!-- End Google Tag Manager -->
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    <section class="team-section team-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="team-title">
+                        <div class="section-title">
+                            <div>
+                                {{ form_start(form) }}
+                                <table style="border-collapse:separate; border-spacing:20px; margin-left: -20px">
+                                    <tr>
+                                        <td>
+                                            <h4 style="color: orangered;">Recherche</h4>
+                                        </td>
+                                        <td>
+                                            {{ form_widget(form.recherche) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4 style="color: orangered;">Tri par prix</h4>
+                                        </td>
+                                        <td>
+                                            {{ form_widget(form.tri) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Recherche</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="team-title">
+                        <div class="section-title">
+                            <span>Nos produits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for produit in produits %}
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="ts-item set-bg" data-setbg="{{asset('uploads/images/' ~ produit.image)}}">
+                            <div class="ts_text">
+                                <h4>{{ produit.labelle }}</h4>
+                                <span>{{ produit.prix }} DT</span><br/>
+                                {% if produit.quantite > 0 %}
+                                    <a href="{{ path('panier_produit_new', {id: produit.id }) }}" class="primary-btn pricing-btn">Ajouter au panier</a>
+                                {% else %}
+                                    <h3 style="color: red;">EN RUPTURE DE STOCK</h3>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Aucun produit trouvé</td>
+                    </tr>
+                {% endfor %}
+                <div class="container navigation">
+                    {{ knp_pagination_render(produits) }}
+                </div>
+            </div>
+        </div></section>
+{% endblock %}
