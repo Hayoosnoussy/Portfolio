@@ -1,0 +1,70 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Lost & Found Objects{% endblock %}
+
+{% block body %}
+
+    <h1>Lost & Found</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Status</th>
+                <th>Adress</th>
+                <th>SecCategorie</th>
+                <th>Categorie</th>
+                <th>CarteType</th>
+                <th>Bank</th>
+                <th>Date</th>
+                <th>Owner_name</th>
+                <th>Owner_ln</th>
+                <th>Marque</th>
+                <th>Photo</th>
+                <th>Coleur</th>
+                <th>Adress_supp</th>
+                <th>Nationalite</th>
+                <th>Objet_status</th>
+                <th>Question_supp</th>
+                <th>Nom_objet</th>
+                <th>Details</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+
+                <td>{{ produit.Status }}</td>
+                <td>{{ produit.Adress }}</td>
+                <td>{{ produit.SecCategorie }}</td>
+                <td>{{ produit.Categorie }}</td>
+                <td>{{ produit.CarteType }}</td>
+                <td>{{ produit.Bank }}</td>
+                <td>{{ produit.Date ? produit.Date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ produit.ownerName }}</td>
+                <td>{{ produit.ownerLn }}</td>
+                <td>{{ produit.marque }}</td>
+                <td>{{ produit.photo }}</td>
+                <td>{{ produit.coleur }}</td>
+                <td>{{ produit.adressSupp }}</td>
+                <td>{{ produit.nationalite }}</td>
+                <td>{{ produit.objetStatus }}</td>
+                <td>{{ produit.questionSupp }}</td>
+                <td>{{ produit.nomObjet }}</td>
+                <td>{{ produit.details }}</td>
+                <td>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a> |
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

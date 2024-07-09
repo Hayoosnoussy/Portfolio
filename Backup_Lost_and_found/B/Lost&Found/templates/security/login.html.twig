@@ -1,0 +1,84 @@
+{% extends 'pro.html.twig' %}
+
+{% block title %}Lost & Found | Sign in{% endblock %}
+
+{% block body %}
+
+    <section id="hero" class="d-flex align-items-center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+
+
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        <img src="{{ asset('lastone/assets/img/Logo.png')}}"
+                             class="img-fluid" alt="Sample image">
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <br>
+                        <br>
+                        <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                            {% if not app.user %}
+                            <h1>SIGN IN </h1></div>
+                        {% endif %}
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+                            {% if not app.user %}
+                            <!-- Email input -->
+
+                            <div class="form-outline mb-4" data-validate = "Enter username">
+
+                                <input type="email" value="{{ last_username }}" required name="_username"  id="inputEmail" class="form-control form-control-lg"
+                                       class="form-control" required autofocus  placeholder="Enter a valid email address" />
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-3" data-validate="Enter password">
+
+                                <input type="password" required name="_password" id="inputPassword"   class="form-control form-control-lg" required
+                                       placeholder="Enter password" />
+                            </div>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}">
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Checkbox -->
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                    <label class="form-check-label" for="form2Example3">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <a  href={{ path("app_forgot_password_request")}} class="link">Forgot password?</a>
+                            </div>
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                                <br>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href={{ path("security_registartion")}}
+                                                                                                  class="link-danger">Register</a></p>
+                            </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

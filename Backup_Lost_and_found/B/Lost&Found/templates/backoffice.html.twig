@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{% block title %} titre {%  endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href={{ asset("assets/vendor/bootstrap/css/bootstrap.min.css")}}>
+    <link rel="stylesheet" href={{ asset("assets/vendor/font-awesome/css/font-awesome.min.css")}}>
+    <link rel="stylesheet" href={{ asset("assets/vendor/linearicons/style.css")}}>
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href={{ asset("assets/css/main.css")}}>
+    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+    <link rel="stylesheet" href={{ asset("assets/css/demo.css")}}>
+    <!-- GOOGLE FONTS -->
+    <link href={{ asset("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700")}} rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href={{ asset("assets/img/LFBEAR.ico")}}>
+    <link rel="icon" type="image/png" sizes="96x96" href={{ asset("assets/img/LFBEAR.ico")}}>
+</head>
+
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
+
+    <!-- LEFT SIDEBAR -->
+
+    <div id="sidebar-nav" class="sidebar">
+        <div class="sidebar-scroll">
+            <nav>
+                <ul class="nav">
+                    <li><a href={{ path('home') }} class=""><i class="lnr lnr-home"></i> <span>Home Page</span></a></li>
+                    <li><a href={{ path('personne_new') }} class=""><i class="lnr lnr-user"></i> <span>New User</span></a></li>
+                    <li><a href={{ path('personne_index') }} class=""><i class="lnr lnr-users"></i> <span>All users</span></a></li>
+                    <li><a href={{ path('produit_index') }} class=""><i class="lnr lnr-book"></i> <span>Lost Archive</span></a></li>
+                    <li><a href={{ path('produit_index3') }} class=""><i class="lnr lnr-book"></i> <span>Found Archive</span></a></li>
+                    <li><a href={{ path('produit_index1') }} class=""><i class="lnr lnr-chart-bars"></i> <span>Graphics may help</span></a></li>
+
+
+
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+
+    <div class="main">
+        <!-- MAIN CONTENT -->
+        {% block body %}
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="panel panel-profile">
+                    <div class="clearfix">
+                        <!-- LEFT COLUMN -->
+
+
+                            {% endblock %}
+                            <!-- END PROFILE HEADER -->
+
+                            <!-- END PROFILE DETAIL -->
+
+                        <!-- END LEFT COLUMN -->
+                        <!-- RIGHT COLUMN -->
+
+                            <!-- END AWARDS -->
+                            <!-- TABBED CONTENT -->
+
+                            <!-- END TABBED CONTENT -->
+
+                        <!-- END RIGHT COLUMN -->
+
+        <!-- END MAIN CONTENT -->
+
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+
+</div>
+<!-- END WRAPPER -->
+<!-- Javascript -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/scripts/klorofil-common.js"></script>
+</body>
+
+</html>

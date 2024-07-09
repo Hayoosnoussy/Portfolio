@@ -1,0 +1,236 @@
+{% extends 'pro.html.twig' %}
+
+{% block title %}Lost & Found{% endblock %}
+{% block header %}
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto"><a href={{ path('home') }}>Lost <img src="{{ asset('lastone/assets/img/logo.png')}}" alt="" class="img-fluid"> Found</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto " href={{ path('home') }}>Home</a></li>
+
+                    {% if app.user %}
+                        {% if app.user.role == "admin" %}
+                            <li><a class="nav-link   scrollto" href={{ path('personne_index') }}>User Management</a></li>
+                            <li><a class="nav-link   scrollto" href={{ path('produit_index') }}>Archive</a></li>
+                            <li><a class="nav-link   scrollto" href={{asset("chat")}}>Chat Room</a></li>
+                        {% elseif app.user.role == 'User' %}
+                            <li><a class="nav-link   scrollto" href={{asset("chat")}}>Chat Room</a></li>
+                            <li><a class="nav-link   scrollto active" href={{ path('produit_new') }}>I Lost | Found</a></li>
+                            <li><a class="nav-link   scrollto" href={{ path('produit_index2') }}>My Lost | Found</a></li>
+                        {% endif %}
+
+                        <li class="dropdown"><a href=""><img src="{{ asset('uploads/images/' ~ app.user.photo) }}" alt="mdo" width="30" height="30" class="rounded-circle"><i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href={{ path('personne_profil') }}>Profil</a></li>
+                                <li><a href={{ path('app_logout') }}>Logout</a></li>
+
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {% if not app.user %}
+                        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        <li><a class="getstarted scrollto" href={{ ("/login") }}>Get Started</a></li>
+                    {% endif %}
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+{% endblock %}
+{% block body %}
+    <!-- ======= Hero Section ======= -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="120">
+                    <h1>Better Solutions For Your Lost Or Found Things</h1>
+                    <h2>We are at your disposal</h2>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ asset('lastone/assets/img/lf.png')}}"  class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- End Hero -->
+    <!-- ======= Hero Section ======= -->
+
+    <!-- ======= Contact Section ======= -->
+    <br>
+    <br>
+    <br>
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-5 d-flex align-items-stretch">
+                    <div class="info">
+                        <div class="address">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Location:</h4>
+                            <p>Tunisia</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p> </p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p> </p>
+                        </div>
+                       <!-- uncomment this when api is ready -->
+                      {#   <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> #}
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+
+                    {{ form_start(form) }}
+                    <div class="php-email-form">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Lost / Found</label>
+                                {{ form_widget(form.Status) }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Where?</label>
+                                {{ form_widget(form.Adress) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Categorie</label>
+                            {{ form_widget(form.Categorie) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Second Categorie</label>
+                            {{ form_widget(form.SecCategorie) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Brand</label>
+                            {{ form_widget(form.marques) }}
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Type of card</label>
+                                {{ form_widget(form.CarteType) }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Bank Name</label>
+                                {{ form_widget(form.Bank) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Owner Name</label>
+                                {{ form_widget(form.owner_name) }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Last Name</label>
+                                {{ form_widget(form.owner_ln) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Marque</label>
+                            {{ form_widget(form.marque) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Photo</label>
+                            {{ form_widget(form.photo) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Color</label>
+                            {{ form_widget(form.coleur) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Second Adress</label>
+                            {{ form_widget(form.adress_supp) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nationality</label>
+                            {{ form_widget(form.nationalite) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Object Status</label>
+                            {{ form_widget(form.objet_status) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Supplemntary Question</label>
+                            {{ form_widget(form.question_supp) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Pet's Name</label>
+                            {{ form_widget(form.nom_objet) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Details</label>
+                            {{ form_widget(form.details) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Date</label>
+                            {{ form_widget(form.Date) }}
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary"> {{ button_label|default('Sauvegarder') }}</button>
+
+                    </div>
+
+                </div>
+                {{  form_end(form) }}
+            </div>
+
+
+
+        </div>
+    </section><!-- End Contact Section -->
+
+
+
+
+
+            {% endblock %}
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const countrySelectEl = document.getElementById('produit_Categorie');
+
+            countrySelectEl.addEventListener('change', function(e) {
+                const formEl = countrySelectEl.closest('form');
+
+                fetch(formEl.action, {
+                    method: formEl.method,
+                    body: new FormData(formEl)
+                })
+                    .then(response => response.text())
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const newCityFormFieldEl = doc.getElementById('produit_SecCategorie');
+
+                        newCityFormFieldEl.addEventListener('change', function(e) {
+                            e.target.classList.remove('is-invalid');
+                        });
+
+                        document.getElementById('produit_SecCategorie').replaceWith(newCityFormFieldEl);
+                    })
+                    .catch(function (error) {
+                        console.warn('Something went wrong.', error);
+                    });
+            });
+        });
+    </script>
+{% endblock %}

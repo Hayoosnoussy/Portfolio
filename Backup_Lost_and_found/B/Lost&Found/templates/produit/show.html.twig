@@ -1,0 +1,94 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ produit.Status }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ produit.Adress }}</td>
+            </tr>
+            <tr>
+                <th>SecCategorie</th>
+                <td>{{ produit.SecCategorie }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ produit.Categorie }}</td>
+            </tr>
+            <tr>
+                <th>CarteType</th>
+                <td>{{ produit.CarteType }}</td>
+            </tr>
+            <tr>
+                <th>Bank</th>
+                <td>{{ produit.Bank }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ produit.Date ? produit.Date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Owner_name</th>
+                <td>{{ produit.ownerName }}</td>
+            </tr>
+            <tr>
+                <th>Owner_ln</th>
+                <td>{{ produit.ownerLn }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ produit.marque }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ produit.photo }}</td>
+            </tr>
+            <tr>
+                <th>Coleur</th>
+                <td>{{ produit.coleur }}</td>
+            </tr>
+            <tr>
+                <th>Adress_supp</th>
+                <td>{{ produit.adressSupp }}</td>
+            </tr>
+            <tr>
+                <th>Nationalite</th>
+                <td>{{ produit.nationalite }}</td>
+            </tr>
+            <tr>
+                <th>Objet_status</th>
+                <td>{{ produit.objetStatus }}</td>
+            </tr>
+            <tr>
+                <th>Question_supp</th>
+                <td>{{ produit.questionSupp }}</td>
+            </tr>
+            <tr>
+                <th>Nom_objet</th>
+                <td>{{ produit.nomObjet }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ produit.details }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('produit_index') }}">back to list</a>
+
+    <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+
+    {{ include('produit/_delete_form.html.twig') }}
+{% endblock %}

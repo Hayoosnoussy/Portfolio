@@ -1,0 +1,181 @@
+{% extends 'conn.html.twig' %}
+
+{% block title %}My Profil{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            margin: 0;
+            padding-top: 40px;
+            color: #2e323c;
+            background: #f5f6fa;
+            position: relative;
+            height: 100%;
+        }
+        .account-settings .user-profile {
+            margin: 0 0 1rem 0;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+        .account-settings .user-profile .user-avatar {
+            margin: 0 0 1rem 0;
+        }
+        .account-settings .user-profile .user-avatar img {
+            width: 90px;
+            height: 90px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+        .account-settings .user-profile h5.user-name {
+            margin: 0 0 0.5rem 0;
+        }
+        .account-settings .user-profile h6.user-email {
+            margin: 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #9fa8b9;
+        }
+        .account-settings .about {
+            margin: 2rem 0 0 0;
+            text-align: center;
+        }
+        .account-settings .about h5 {
+            margin: 0 0 15px 0;
+            color: #007ae1;
+        }
+        .account-settings .about p {
+            font-size: 0.825rem;
+        }
+        .form-control {
+            border: 1px solid #cfd1d8;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            font-size: .825rem;
+            background: #ffffff;
+            color: #2e323c;
+        }
+
+        .card {
+            background: #ffffff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+            margin-bottom: 1rem;
+        }
+
+    </style>
+
+    <div class="login100-form validate-form p-b-33 p-t-5" aria-autocomplete="both">
+        {{ form_start(form) }}
+        <style>
+            input::placeholder {
+                text-align: center;
+            }
+            input::-ms-input-placeholder {
+                text-align: center;
+            }
+            input:-ms-input-placeholder {
+                text-align: center;
+            }
+        </style>
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src ="{{ asset('uploads/images/' ~ app.user.photo) }}"   class="rounded-circle" width="150">
+                                    </div>
+                                    <h5 class="user-name">{{ app.user.nom |upper}} {{ app.user.prenom}}</h5>
+                                    <h6 class="user-email">{{ app.user.email}}</h6>
+                                </div>
+                                <div class="about">
+                                    <h5>About</h5>
+                                    <p>Just a nice person , ready for help anytime .</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.nom , {'label':'Your Name'}) }}
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div></div>
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.prenom , {'label':'Family Name'}) }}
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div></div>
+
+            <div class="wrap-input100"   >
+                <div class="input100">
+                    {{ form_row(form.email , {'label':'Email'}) }}
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div></div>
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.username , {'label':'Username'}) }}
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div></div>
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.password , {'label':'Password'}) }}
+                    <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                </div></div>
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.confirm_password , {'label':'Confirm Password'}) }}
+                    <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                </div> </div>
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.photo , {'label':'Photo'})  }}
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div></div>
+            <div class="wrap-input100"  >
+                <div class="input100">
+                    {{ form_row(form.numTelephone , {'label':'Phone Number'}) }}
+
+                    <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                </div></div>
+
+            <div class="text-light">
+                <div class="container-login100-form-btn m-t-32">
+                    <button class="login100-form-btn" type="submit">
+                        Save
+                    </button>
+                    <br>
+                    <br>
+
+                    <div class=""container-login100-form-btn m-t-32">
+
+
+                </div>
+            </div>
+
+            <div class=""container-login100-form-btn m-t-32">
+
+            <div class="text-light">
+                <div class="container-login100-form-btn m-t-32">
+                    <a href="{{ asset('profil')}}"class="login100-form-btn">
+                        Back</a>
+                </div>
+            </div>
+
+
+
+            {{  form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
