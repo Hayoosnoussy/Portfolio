@@ -1,3 +1,0 @@
-<?php //route_name_a8cb1a15e2054f2826f000bec3e692d2
-
-return [PHP_INT_MAX, 'api_medicaments_get_collection'];
