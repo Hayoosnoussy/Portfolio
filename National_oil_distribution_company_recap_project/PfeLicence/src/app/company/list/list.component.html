@@ -1,0 +1,58 @@
+<mat-toolbar color="secondary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button >
+            <mat-icon>Menu</mat-icon>
+        </button>
+    </div>
+    <div>
+      Liste Company 
+    </div>
+    <div  fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <ol>
+                <a class="btn btn-sm btn-secondary text-white pull-right" (click)="addCompany()"><i class="fa fa-plus"></i>Ajouter Company </a>
+  
+            </ol>
+           
+        </ul>
+    </div>
+  </mat-toolbar>
+     <div class="pricing-header mx-auto">
+       <div class="table-responsive">
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-md">
+        <thead>
+        <tr  >
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Adress</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Login</th>
+        <th scope="col">Password</th>
+        <th class="text-center" scope="col">Edit</th>
+        <th class="text-center" scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of this.crudApi.companyList">
+        <th  *ngIf="item.role!='Admin'">{{item.id}}</th>
+        <td  *ngIf="item.role!='Admin'" >{{item.name}}</td>
+        <td *ngIf="item.role!='Admin'">{{item.address}}</td>
+        <td *ngIf="item.role!='Admin'">{{item.phone}}</td>
+        <td *ngIf="item.role!='Admin'">{{item.email}}</td>
+        <td *ngIf="item.role!='Admin'">{{item.roles}}</td>
+        <td *ngIf="item.role!='Admin'">{{item.login}}</td>
+        <td *ngIf="item.role!='Admin'">*******</td>
+    
+          <td *ngIf="item.role!='Admin'"><button class="btn btn-primary" style="margin-left: 20px;" (click) = "selectData(item)">
+            <i class="fa fa-pencil-square-o" ></i></button></td>
+         <td *ngIf="item.role!='Admin'"><button class="btn btn-danger" (click) = "removeData(item.id)">
+            <i class="fa fa-trash-o"></i></button></td>
+           </tr>
+        
+             </tbody>
+             </table>
+             </div>
+           </div>
+    

@@ -1,0 +1,64 @@
+<mat-toolbar color="secondary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button >
+            <mat-icon>Menu</mat-icon>
+        </button>
+    </div>
+    <div>
+      Liste Invitation 
+    </div>
+    <div  fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+          <ol>
+            <a class="btn btn-sm btn-secondary text-white pull-right" (click) = "send()" ><i class="fa fa-plus"></i>Batchi </a>
+
+        </ol>
+            
+        </ul>
+      </div>
+      <div>
+        <div class="input-group input-daterange">
+          <input type="date" class="form-control" >
+          <div class="input-group-addon">to</div>
+          <input type="date" class="form-control" >
+      
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  </mat-toolbar>
+     <div class="pricing-header mx-auto">
+       <div class="table-responsive">
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-md">
+        <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Date</th>
+        <th scope="col">Destinataire</th>
+        <th scope="col">Statu d'envoi</th>
+        
+    
+        <th class="text-center" scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of this.crudApi.invitationList">
+        <th  >{{item.id}}</th>
+        <td >{{item.date}}</td>
+        <td >{{item.destinataireEmail}}</td>
+        <td >{{item.sentStatus}}</td>
+        
+    
+        
+         <td ><button class="btn btn-danger" (click) = "removeData(item.id)">
+            <i class="fa fa-trash-o"></i></button></td>
+           </tr>
+        
+             </tbody>
+             </table>
+             </div>
+           </div>
+    
