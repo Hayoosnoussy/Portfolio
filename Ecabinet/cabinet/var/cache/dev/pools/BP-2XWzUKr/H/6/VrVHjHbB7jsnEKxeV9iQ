@@ -1,0 +1,3 @@
+<?php //route_name_5d827866a1b53aeefcbef2ddba60c054
+
+return [PHP_INT_MAX, 'api_consultations_get_collection'];
