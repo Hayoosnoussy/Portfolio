@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TheMStore">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/TheMStore.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
