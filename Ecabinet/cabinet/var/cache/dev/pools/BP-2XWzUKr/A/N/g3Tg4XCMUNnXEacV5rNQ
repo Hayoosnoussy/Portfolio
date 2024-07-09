@@ -1,3 +1,0 @@
-<?php //route_name_10dbde971c5fb170cbeabc183f1cd88d
-
-return [PHP_INT_MAX, 'api_compteurs_get_item'];
