@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="User.jnlp">
+  <information>
+    <title>User</title>
+    <vendor>mazen</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="User.jar" size="2348104" download="eager" />
+    <jar href="lib\Bulk_SMS_Library.jar" size="3292" download="eager" />
+    <jar href="lib\TrayTester.jar" size="52070" download="eager" />
+    <jar href="lib\activation-1.1.jar" size="62983" download="eager" />
+    <jar href="lib\braintreehttp-1.3.1.jar" size="38520" download="eager" />
+    <jar href="lib\checkout-sdk-1.0.2.jar" size="75161" download="eager" />
+    <jar href="lib\common-lang3.jar" size="646680" download="eager" />
+    <jar href="lib\commons-codec-1.2.jar" size="30085" download="eager" />
+    <jar href="lib\commons-codec-1.9.jar" size="263965" download="eager" />
+    <jar href="lib\commons-httpclient-3.1.0.jar" size="308294" download="eager" />
+    <jar href="lib\commons-httpclient-3.1.jar" size="305001" download="eager" />
+    <jar href="lib\commons-logging-1.0.4.jar" size="38015" download="eager" />
+    <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
+    <jar href="lib\fontawesomefx-8.1.jar" size="179086" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\fontawesomefx-commons-9.1.2.jar" size="24064" download="eager" />
+    <jar href="lib\fontawesomefx-emojione-3.1.1-9.1.2.jar" size="3642583" download="eager" />
+    <jar href="lib\fontawesomefx-materialdesignfont-2.0.26-9.1.2.jar" size="230736" download="eager" />
+    <jar href="lib\fontawesomefx-materialicons-2.2.0-5-javadoc.jar" size="68748" download="eager" />
+    <jar href="lib\fxsampler-1.0.10.jar" size="30876" download="eager" />
+    <jar href="lib\guava-18.0.jar" size="2256213" download="eager" />
+    <jar href="lib\httpclient-4.2.jar" size="424648" download="eager" />
+    <jar href="lib\httpclient-4.5.2.jar" size="736658" download="eager" />
+    <jar href="lib\httpcore-4.4.4.jar" size="326724" download="eager" />
+    <jar href="lib\httpmime-4.0.3.jar" size="25447" download="eager" />
+    <jar href="lib\itextpdf-5.1.0.jar" size="1614453" download="eager" />
+    <jar href="lib\itextpdf-5.4.1.jar" size="1898417" download="eager" />
+    <jar href="lib\jackson-annotations-2.4.3.jar" size="38604" download="eager" />
+    <jar href="lib\jackson-annotations-2.8.7.jar" size="55781" download="eager" />
+    <jar href="lib\jackson-annotations-2.9.0.jar" size="66519" download="eager" />
+    <jar href="lib\jackson-core-2.4.3.jar" size="225295" download="eager" />
+    <jar href="lib\jackson-core-2.8.7.jar" size="282314" download="eager" />
+    <jar href="lib\jackson-core-2.9.5.jar" size="321590" download="eager" />
+    <jar href="lib\jackson-databind-2.4.3.jar" size="1075679" download="eager" />
+    <jar href="lib\jackson-databind-2.8.7.jar" size="1237433" download="eager" />
+    <jar href="lib\jackson-databind-2.9.5.jar" size="1342410" download="eager" />
+    <jar href="lib\javax.mail-1.5.0.jar" size="521991" download="eager" />
+    <jar href="lib\javax.mail.jar" size="659033" download="eager" />
+    <jar href="lib\jaxb-api-2.2.jar" size="104172" download="eager" />
+    <jar href="lib\jfoenix-1.0.0 - Copie.jar" size="2186636" download="eager" />
+    <jar href="lib\jfoenix-1.0.0.jar" size="2186636" download="eager" />
+    <jar href="lib\jfoenix-1.11.0.jar" size="2400735" download="eager" />
+    <jar href="lib\jfoenix-8.0.2 - Copie.jar" size="2442326" download="eager" />
+    <jar href="lib\jfoenix-8.0.2.jar" size="2442326" download="eager" />
+    <jar href="lib\jfoenix-8.0.8 - Copie.jar" size="2708772" download="eager" />
+    <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
+    <jar href="lib\jfoenix.jar" size="2454308" download="eager" />
+    <jar href="lib\jfreechart-1.0.19.jar" size="1565065" download="eager" />
+    <jar href="lib\jfreechart-1.5.0.jar" size="1559088" download="eager" />
+    <jar href="lib\jfreechart-experimental-1.0.9.jar" size="12377" download="eager" />
+    <jar href="lib\jjwt-0.4.jar" size="81937" download="eager" />
+    <jar href="lib\joda-time-2.5.jar" size="588001" download="eager" />
+    <jar href="lib\jxl-2.6.9.jar" size="703322" download="eager" />
+    <jar href="lib\libphonenumber-3.0.0-javadoc.jar" size="141043" download="eager" />
+    <jar href="lib\mail.jar" size="521000" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\org.apache.commons.beanutils.jar" size="201356" download="eager" />
+    <jar href="lib\org.apache.httpcomponents.httpcore_4.2.1.jar" size="513473" download="eager" />
+    <jar href="lib\org.json.jar" size="48796" download="eager" />
+    <jar href="lib\paypal-core-1.6.1.jar" size="124606" download="eager" />
+    <jar href="lib\paypalhttp-1.0.0.jar" size="38052" download="eager" />
+    <jar href="lib\slf4j-api-1.7.6.jar" size="28688" download="eager" />
+    <jar href="lib\stax-api-1.0-2.jar" size="23346" download="eager" />
+    <jar href="lib\stripe-java-1.3.0.jar" size="69388" download="eager" />
+    <jar href="lib\twilio-7.1.0.jar" size="1157599" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="User" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="user.User"  name="User" />
+  <update check="always"/>
+</jnlp>
