@@ -1,0 +1,151 @@
+
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button >
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+    <h1>Gestion produit</h1> 
+    
+    </div>
+  </mat-toolbar>  
+  <div *ngIf ="error" class='alert alert-danger  alert-dismissible col-md-12 '>
+    <strong><button type="button" class="close" data-dismiss="alert">&times;</button>
+             {{error}}</strong> 
+  </div> 
+    <form [formGroup]="this.crudApi.dataForm" (ngSubmit)="onSubmit()">
+      <input type="hidden"  formControlName="id" id="id">
+
+      <div class="form-group">
+        <label>Nom de Produit </label>
+        <input type="text" class="form-control" formControlName="nom"  />
+        <div  *ngIf="f.nom.invalid && f.nom.touched ">
+          <small *ngIf="f.nom.errors?.required" class="text-danger"> 
+            Le champs est obligatoire
+          </small>
+          <small *ngIf="f.nom.errors?.minlength" class="text-danger">
+Nom doit comporter au moins 5 caractères </small>
+         </div> 
+      </div>
+      <div class="form-group">
+        <label>Auteur </label>
+        <input type="text" class="form-control" formControlName="vendeur"/>
+        <div  *ngIf="f.vendeur.invalid && f.vendeur.touched ">
+          <small *ngIf="f.vendeur.errors?.required" class="text-danger"> 
+            Le champs Auteur est obligatoire
+          </small>
+          <small *ngIf="f.vendeur.errors?.minlength" class="text-danger">
+Nom doit comporter au moins 5 caractères </small>
+         </div> 
+      </div>
+     
+      <div class="form-group">
+        <label>Langue</label>
+        <select name="langue"   class="form-control" formControlName="langue" id="langue" required>
+          
+          <option value = "Book">عربية</option>
+          <option value = "Français">Français</option>
+          <option value = "Anglais">Anglais</option>
+          <option value = "Espagnol">Espagnol</option>
+          <option value = "Italienne">Italienne</option>
+
+              </select>
+              <div  *ngIf="f.langue.invalid && f.langue.touched ">
+              <small *ngIf="f.langue.errors?.required" class="text-danger"> 
+                langue est obligatoire 
+                             </small>
+                            </div>
+      </div>
+      <div class="form-group">
+        <label>Prix Achat  </label>
+        <input type="number" class="form-control" formControlName="prix"/>
+        <div  *ngIf="f.prix.invalid && f.prix.touched ">
+          <small *ngIf="f.prix.errors?.required" class="text-danger"> 
+            Le champs Prix est obligatoire
+          </small>
+         </div> 
+      </div>
+
+      <div class="form-group">
+            <label>Type</label>
+            <select name="type"   class="form-control" formControlName="type" id="type"
+             (change)="onSelectCateg($event.target.value)" required>
+              <option value = "Fiction">Fiction</option>
+              <option value = "Non">Non fiction</option>
+              <option value = "Enfant">Enfant & adolescent </option>
+              <option value = "Éducation">Éducation</option>
+              <option value = "cadeaux">Papeterie cadeaux</option>
+
+                  </select>
+            
+          </div>
+          <div class="form-group">
+            <label>Categorie</label>
+            <select name="categorie"   class="form-control" formControlName="categorie" id="categorie"
+            *ngIf="this.val == 'Fiction'" required>
+              <option value = "Livre audio">Livre audio</option>
+              <option value = "Aventure">Aventure</option>
+              <option value = "Classique">Classique</option>
+              <option value = "Crime & mystère ">Crime & mystère </option>
+              <option value = "Fiction érotique ">Fiction érotique </option>
+              <option value = "Romans graphiques ">Romans graphiques </option>
+              <option value = "Horreur">Horreur</option>
+              <option value = "Sciences fiction">Sciences fiction</option>
+              <option value = "Romance">Romance</option>
+              <option value = "Fiction moderne">Fiction moderne</option>
+                  </select>
+                  <select name="categorie"   class="form-control" formControlName="categorie" id="categorie"
+            *ngIf="this.val == 'Non'" required>
+              <option value = "Informatique">Informatique</option>
+              <option value = "Ingenieurie">Ingenieurie</option>
+              <option value = " technologie et mathématiques "> Technologie et mathématiques </option>
+              <option value = "Nourriture boisson ">Nourriture boisson </option>
+              <option value = "Jeux">Jeux</option>
+              <option value = "Santé et mode de vie">Santé et mode de vie </option>
+                  </select>    
+                  <select name="categorie"   class="form-control" formControlName="categorie" id="categorie"
+                  *ngIf="this.val == 'Enfant'" required>
+                    <option value = "Bande dessinées ">Bande dessinées </option>
+                    <option value = "Fiction">Fiction </option>
+                    <option value = "  Non - fiction"> Non - fiction  </option>
+                    <option value = "Poésie anthologie et anniversaire ">Poésie anthologie et anniversaire  </option>
+                    <option value = "Jeune adulte">Jeune adulte</option>
+                   
+                        </select>     
+                        <select name="categorie"   class="form-control" formControlName="categorie" id="categorie"
+                        *ngIf="this.val == 'Éducation'" required>
+                          <option value = "Histoire ">Histoire </option>
+                          <option value = "Langue ">Langue  </option>
+                          <option value = " Médical "> Médical  </option>
+                          <option value = "Les sciences">Les sciences </option>
+                          <option value = "La technologie">La technologie</option>
+                          <option value = "Mathématiques">Mathématiques</option>                     
+                              </select> 
+                              <select name="categorie"   class="form-control" formControlName="categorie" id="categorie"
+                              *ngIf="this.val == 'cadeaux'" required>
+                                <option value = "Livres de coloriage ">Livres de coloriage pour adultes  </option>
+                                <option value = "Livres cadeaux  ">Livres cadeaux   </option>
+                                <option value = " Des cahiers "> Des cahiers  </option>
+                                <option value = "Articles de papeterie">Articles de papeterie </option>
+                                <option value = "Tarot">Tarot</option>
+                                    </select>     
+          </div>
+      <div class="form-group">
+        <label>Photo  </label>
+            <input type="file" accept="image/*" (change)="onSelectFile($event)" required>
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+    </div>
+    <div class="form-group">
+      <input type="hidden" class="form-input" class="form-control" formControlName="statut" id="statut" [(ngModel)]="this.t" />
+ 
+  </div>
+
+    
+      <div class="form-group">
+        <button type="submit" [disabled] ="!crudApi.dataForm.valid" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+        <a routerLink ="/" >  <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Annuler</button></a>
+      </div>
+    </form>
+   
+      

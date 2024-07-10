@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                  <form [formGroup]="crudApi.dataForm" (ngSubmit)="onSubmit()">
+                    <input type="hidden" class="form-control" formControlName="id" id="id">
+                                                     <h2 class="form-title">Modifier Profil</h2>
+                                                                   
+                                            
+                                                      <div class="form-group">
+                                                        <input type="text" class="form-input" class="form-control" formControlName="ville" id="ville"  placeholder="Ville"/>
+                                                        <div  *ngIf="f.ville.invalid && f.ville.touched ">
+                                                            <small *ngIf="f.ville.errors?.required" class="text-danger"> 
+                                              Ville Le champs est obligatoire
+                                                            </small>
+                                                            <small *ngIf="f.ville.errors?.minlength" class="text-danger">
+                                              Ville doit comporter au moins 5 caractères </small>
+                                                           </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <input type="text" class="form-input" class="form-control" formControlName="adresse" id="adresse"  placeholder="Adresse"/>
+                                                        <div  *ngIf="f.adresse.invalid && f.adresse.touched ">
+                                                            <small *ngIf="f.adresse.errors?.required" class="text-danger"> 
+                                              The Adresse Le champs est obligatoire
+                                                            </small>
+                                                            <small *ngIf="f.adresse.errors?.minlength" class="text-danger">
+                                              Adresse doit comporter au moins 10 caractères </small>
+                                                           </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <input type="number" class="form-input" class="form-control" formControlName="codep" id="codep"  placeholder=" Code Postal"/>
+                                                        <div  *ngIf="f.codep.invalid && f.codep.touched ">
+                                                            <small *ngIf="f.codep.errors?.required" class="text-danger"> 
+                                              Code Postal Le champs est obligatoire
+                                                            </small>
+                                                            <small *ngIf="f.codep.errors?.minlength" class="text-danger">
+                                              Code Postal doit comporter au moins 4 caractères </small>
+                                                           </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" class="form-input" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  [class.is-invalid]="f.email.invalid && f.email.touched" class="form-control" formControlName="email" id="email" placeholder=" Email" />
+                                                        <div    *ngIf="f.email.invalid && f.email.touched ">
+                                                            <small *ngIf="f.email.errors?.required" class="text-danger">  E-mail est obligatoire</small>
+                                                            <small *ngIf="f.email.errors?.minlength" class="text-danger"> E-mail  must have at least 10 characters  </small>
+                                                           
+                                                           </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-input" class="form-control" formControlName="pwd" id="pwd" placeholder="Password"/>
+                                                        <div *ngIf="f.pwd.touched && f.pwd.invalid">
+                                                            <small *ngIf="f.pwd.errors.required" class="text-danger">mot de passe est obligatoire</small>
+                                                            <small *ngIf="f.pwd.errors?.minlength" class="text-danger"> 
+                                                              Mot de passe doit comporter au moins 8 caractères</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label>Vous êtes ?</label>
+                                                      <select name="role"   class="form-control" formControlName="role" id="role" required>
+                                                        <option value = "Book">Bouquiniste</option>
+                                                        <option value = "Client">Client</option>
+                                          
+                                                            </select>
+                                                    </div>
+                   
+                        <div class="form-group">
+                            <input type="submit" name="submit"  id="submit" class="form-submit" value="Modifier Profil"/>
+                            <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Annuler</button>
+                        </div>
+                    </form>
+                  
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

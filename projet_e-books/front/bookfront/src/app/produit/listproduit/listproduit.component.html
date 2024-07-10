@@ -1,0 +1,67 @@
+<mat-toolbar color="primary">
+    <div class="col-md-2 text-center">
+      Liste produit
+      
+    </div>
+</mat-toolbar>
+
+   <div class="col-md-12 col-md-offset-2">
+     <div class="table-responsive">
+      <table class="table table-bordered table-responsive-sm table-responsive-md
+     table-responsive-lg">
+      <thead>
+      <tr>
+      <th scope="col">Nom de Produit</th>
+      <th scope="col">Auteur</th>
+      <th scope="col">Type</th>
+      <th scope="col">Categorie</th>
+      <th scope="col">Langue</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Image</th>
+
+
+      <th class="text-center" scope="col">Action</th>
+      <th>
+        <a class="btn btn-sm btn-success text-white pull-right" (click)="addproduit()">
+        <i class="fa fa-plus"></i>Ajouter Produit </a>
+        
+      </th>
+      <th class="text-center" scope="col">Accepter Nouveau Produit </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of this.crudApi.produitList ">
+      <td>{{item.nom}}</td>
+      <td>{{item.vendeur}}</td>
+      <td>{{item.type}}</td>
+      <td>{{item.categorie}}</td>
+      <td>{{item.langue}}</td>
+      <td>{{item.prix}}</td>
+      <td>{{item.statut}}</td>
+
+      <td><a ><img class="card-img-top img-responsive"
+        src = "{{this.crudApi.host+'/api/Imgproduit/'+item.id}}" 
+        style = "height :50px;width:50px"
+       alt=""></a></td>
+
+       <td ><button class="btn btn-warning" style="margin-left: 20px;" (click) = "selectData(item)">
+        <i class="fa fa-pencil-square-o" ></i></button></td>
+      <td><button class="btn btn-danger" (click) = "removeData(item.id)">
+        <i class="fa fa-trash-o"></i></button></td>
+        <td ><button class="btn btn-success" style="margin-left: 20px;" (click) = "update(item)">
+          <i class="fa fa-check" ></i></button></td>
+         </tr>
+         
+           </tbody>
+           </table>
+           <p class="float-right">
+            <a  routerLink ="/" routerLinkActive="active">Back to top</a>
+        </p>
+           </div>
+         </div>
+
+
+
+
+

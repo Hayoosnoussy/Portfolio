@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button >
+            <mat-icon>Menu</mat-icon>
+        </button>
+    </div>
+    <div>
+      Liste Utilisteurs
+    </div>
+    <div  fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            
+            <li>
+                <a routerLink="/">Log Out</a>
+            </li>
+        </ul>
+    </div>
+  </mat-toolbar>
+     <div class="pricing-header mx-auto">
+       <div class="table-responsive">
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-md">
+        <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Ville</th>
+        <th scope="col">Email</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Code Postal</th>
+        <th scope="col">Login</th>
+        <th scope="col">Password</th>
+        <th scope="col">Role</th>
+        <th class="text-center" scope="col">Edit</th>
+        <th class="text-center" scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of this.crudApi.userList">
+        <th >{{item.id}}</th>
+        <td >{{item.ville}}</td>
+        <td >{{item.email}}</td>
+        <td >{{item.adresse}}</td>
+        <td >{{item.codep}}</td>
+        <td >{{item.login}}</td>
+        <td >{{item.pwd}}</td>
+        <td >{{item.role}}</td>
+    
+          <td ><button class="btn btn-warning" style="margin-left: 20px;" (click) = "selectData(item)">
+            <i class="fa fa-pencil-square-o" ></i></button></td>
+          <td><button class="btn btn-danger" (click) = "removeData(item.id)">
+            <i class="fa fa-trash-o"></i></button></td>
+           </tr>
+        
+             </tbody>
+             </table>
+             </div>
+           </div>
+    

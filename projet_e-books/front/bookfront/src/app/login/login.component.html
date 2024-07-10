@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Login </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login </h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(assets/login/images/bg-1.jpg);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Sign In</h3>
+			      		</div>
+			      	</div>
+							<form action="#" class="signin-form">
+			      		<div class="form-group mb-3">
+                            <label class="label" for="name">Username</label>
+                            <input class="input100" type="text" class="form-control" id="usern" required [(ngModel)]="usern" name="usern" placeholder="User name">
+                            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+			      		</div>
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+                        <input class="input100" type="password" class="form-control" id="pwd" required [(ngModel)]="pwd" name="pwd" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>		            </div>
+		            <div class="form-group">
+		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3" (click)="login()">Sign In</button>
+		            </div>
+
+		          </form>
+		          <p class="text-center">Not a member? 	<button class="btn btn-primary" style="width: 45%;" (click)="signin()"> 
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign Up</button></p>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<script src="assets/login/js/jquery.min.js"></script>
+<script src="assets/login/js/popper.js"></script>
+<script src="assets/login/js/bootstrap.min.js"></script>
+<script src="assets/login/js/main.js"></script>
+	</body>
+</html>
+

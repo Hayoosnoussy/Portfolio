@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>  Template</title>
+
+  
+</head>
+
+
+  <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
+    <script>
+      NProgress.configure({ showSpinner: false });
+      NProgress.start();
+    </script>
+
+    <div class="mobile-sticky-body-overlay"></div>
+
+    <div class="wrapper">
+      
+              <!--
+          ====================================
+          ——— LEFT SIDEBAR WITH FOOTER
+          =====================================
+        -->
+        <aside class="left-sidebar bg-sidebar">
+          <div id="sidebar" class="sidebar sidebar-with-footer">
+            <!-- Aplication Brand -->
+            <div class="app-brand">
+              <a href="/index.html">
+                <svg
+                  class="brand-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid"
+                  width="30"
+                  height="33"
+                  viewBox="0 0 30 33"
+                >
+                  <g fill="none" fill-rule="evenodd">
+                    <path
+                      class="logo-fill-blue"
+                      fill="#7DBCFF"
+                      d="M0 4v25l8 4V0zM22 4v25l8 4V0z"
+                    />
+                    <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
+                  </g>
+                </svg>
+                <span class="brand-name">House Book</span>
+              </a>
+            </div>
+            <!-- begin sidebar scrollbar -->
+            <div class="sidebar-scrollbar">
+
+              <!-- sidebar menu -->
+              <ul class="nav sidebar-inner" id="sidebar-menu">
+                
+
+                
+                  <li  class="has-sub active expand" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
+                      aria-expanded="false" aria-controls="dashboard">
+                      <i class="mdi mdi-view-dashboard-outline"></i>
+                      <span class="nav-text">Type</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse show"  id="dashboard"
+                      data-parent="#sidebar-menu">
+                      <div class="sub-menu">
+                        
+                        <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#authentication"
+                            aria-expanded="false" aria-controls="authentication">
+                            <span class="nav-text">Fiction</span> <b class="caret"></b>
+                          </a>
+                          <ul  class="collapse"  id="authentication">
+                            <div class="sub-menu">
+                              
+                              <li (click)="hello('Livre audio')"> <a >Livre audio</a> </li>
+                               <li (click)="hello('Aventure')" > <a >Aventure </a> </li>
+                                <li (click)="hello('Classique')"> <a >Classique </a> </li>
+                                 <li (click)="hello('Crime & mystère')"> <a >Crime & mystère </a> </li> 
+                                 <li (click)="hello('Fiction érotique')"> <a >Fiction érotique </a> </li>
+                                  <li (click)="hello('Romans graphiques')"> <a >Romans graphiques </a> </li> 
+                                  <li (click)="hello('Horreur')"> <a >Horreur </a> </li>
+                                   <li (click)="hello('Sciences fiction')"> <a >Sciences fiction </a> </li> 
+                              <li (click)="hello('Romance')"> <a >Romance </a> </li>
+                               <li (click)="hello('Fiction moderne')"> <a >Fiction moderne </a> </li>
+                              
+                            </div>
+                          </ul>
+                        </li>
+
+
+                        
+                        <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Asba"
+                            aria-expanded="false" aria-controls="Asba">
+                            <span class="nav-text"> Non Fiction</span> <b class="caret"></b>
+                          </a>
+                          <ul  class="collapse"  id="Asba">
+                            <div class="sub-menu">
+                              
+                              <li (click)="hello('Informatique')"> <a >Informatique</a> </li> 
+                              <li (click)="hello('Ingenieurie')"> <a >Ingenieurie </a> </li> 
+                              <li (click)="hello('Technologie et mathématiques')"> <a >Technologie et mathématiques </a> </li> 
+                              <li (click)="hello('Nourriture boisson')"> <a >Nourriture boisson </a> </li> 
+                              <li (click)="hello('Jeux')"> <a >Jeux </a> </li> 
+                              <li (click)="hello('Santé et mode de vie')"> <a >Santé et mode de vie  </a> </li> 
+                              
+                            </div>
+                          </ul>
+                        </li>
+
+
+                        <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Cole"
+                            aria-expanded="false" aria-controls="Cole">
+                            <span class="nav-text">Enfant & adolescent</span> <b class="caret"></b>
+                          </a>
+                          <ul  class="collapse"  id="Cole">
+                            <div class="sub-menu">
+                              
+                              <li (click)="hello('Bande dessinées')"> <a >Bande dessinées</a> </li> 
+                              <li (click)="hello('Fiction')"> <a >Fiction </a> </li> 
+                              <li (click)="hello('Non - fiction')"> <a >Non - fiction  </a> </li> 
+                              <li (click)="hello('Poésie anthologie et anniversaire')"> <a >Poésie anthologie et anniversaire  </a> </li> 
+                              <li (click)="hello('Jeune adulte')"> <a >Jeune adulte </a> </li> 
+                           
+                              
+                            </div>
+                          </ul>
+                        </li>
+
+                        <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Éducation"
+                            aria-expanded="false" aria-controls="Éducation">
+                            <span class="nav-text">Éducation</span> <b class="caret"></b>
+                          </a>
+                          <ul  class="collapse"  id="Éducation">
+                            <div class="sub-menu">
+                              
+                              <li (click)="hello('Histoire')"> <a >Histoire</a> </li> 
+                              <li (click)="hello('Langue')"> <a >Langue </a> </li> 
+                              <li (click)="hello('Médical')"> <a >Médical  </a> </li> 
+                              <li (click)="hello('Les sciences')"> <a >Les sciences  </a> </li> 
+                              <li (click)="hello('La technologie')"> <a >La technologie </a> </li> 
+                              <li (click)="hello('Mathématiques')"> <a >Mathématiques  </a> </li> 
+
+                              
+                            </div>
+                          </ul>
+                        </li>
+                        <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#Histoire"
+                            aria-expanded="false" aria-controls="Histoire">
+                            <span class="nav-text">Papeterie cadeaux</span> <b class="caret"></b>
+                          </a>
+                          <ul  class="collapse"  id="Histoire">
+                            <div class="sub-menu">
+                              
+                              <li (click)="hello('Livres de coloriage pour adultes')"> <a >Livres de coloriage pour adultes</a> </li> 
+                              <li (click)="hello('Livres cadeaux')"> <a >Livres cadeaux  </a> </li> 
+                              <li (click)="hello('Des cahiers')"> <a >Des cahiers  </a> </li> 
+                              <li (click)="hello('Articles de papeterie')"> <a >Articles de papeterie  </a> </li> 
+                              <li (click)="hello('Tarot')"> <a >Tarot  </a> </li> 
+
+                              
+                            </div>
+                          </ul>
+                        </li>
+
+                        
+                      </div>
+                    </ul>
+                  </li>
+                            
+
+                
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#ui-elements"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      <i class="mdi mdi-folder-multiple-outline"></i>
+                      <span class="nav-text">Achat</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="ui-elements"
+                      data-parent="#sidebar-menu">
+                      <div class="sub-menu">
+                        
+                        
+                        <li  class="has-sub" *ngIf="this.slm.islogin == true ">
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#components"
+                            aria-expanded="false" aria-controls="components"
+                            routerLink ="/acceuil" routerLinkActive="active">
+                            <span class="nav-text">Voir panier</span> 
+                          </a>
+                       
+                        </li>
+                        
+
+  
+                      </div>
+                    </ul>
+                  </li>
+              
+
+
+
+
+
+                  
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#charts"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="mdi mdi-chart-pie"></i>
+                      <span class="nav-text" >Statistiques</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="charts"
+                      data-parent="#sidebar-menu">
+                      <div class="sub-menu">
+
+                            <li >
+                              <a class="sidenav-item-link" routerLink ="/stat">
+                                <span class="nav-text">Stat des livres</span>
+                                
+                              </a>
+                            </li>
+        
+                      </div>
+                    </ul>
+                  </li>
+                
+                  
+                
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
+                      aria-expanded="false" aria-controls="pages">
+                      <i class="mdi mdi-image-filter-none"></i>
+                      <span class="nav-text">User</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="pages"
+                      data-parent="#sidebar-menu">
+                      <div class="sub-menu">
+                        
+                        
+                          
+                            <li *ngIf=" this.slm.islogin == true">
+                              <a  class="sidenav-item-link" routerLink ="/profil" routerLinkActive="active">
+                                <span class="nav-text">User Profile</span>
+                                
+                              </a>
+                            </li>
+                          
+                            <li >
+                              <a class="sidenav-item-link" routerLink ="/login">
+                                <span class="nav-text">Authentication</span>
+                                
+                              </a>
+                            </li>
+
+                        
+                        
+                     
+                        
+
+                        
+                        
+ 
+                      </div>
+                    </ul>
+                  </li>
+                
+
+                
+
+                
+             
+              </ul>
+
+            </div>
+
+            <hr class="separator" />
+
+            <div class="sidebar-footer">
+              <div class="sidebar-footer-content">
+                <h6 class="text-uppercase">
+                  Cpu Uses <span class="float-right">40%</span>
+                </h6>
+                <div class="progress progress-xs">
+                  <div
+                    class="progress-bar active"
+                    style="width: 40%;"
+                    role="progressbar"
+                  ></div>
+                </div>
+                <h6 class="text-uppercase">
+                  Memory Uses <span class="float-right">65%</span>
+                </h6>
+                <div class="progress progress-xs">
+                  <div
+                    class="progress-bar progress-bar-warning"
+                    style="width: 65%;"
+                    role="progressbar"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      
+
+      <div class="page-wrapper">
+                  <!-- Header -->
+          <header class="main-header " id="header">
+            <nav class="navbar navbar-static-top navbar-expand-lg">
+              <!-- Sidebar toggle button -->
+              <button id="sidebar-toggler" class="sidebar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+              </button>
+              <!-- search form -->
+              <form>
+              <div class="search-form d-none d-lg-inline-block">
+                <div class="input-group">
+                  <input  class="input100" type="text" class="form-control" id="nom" required [(ngModel)]="nom" name="nom" placeholder="Chercher Nom Livre,Auteur">
+                  <button type="button" name="search" id="search-btn" class="btn btn-flat" (click)="recherche()">
+                    <i class="mdi mdi-magnify"></i>
+                  </button>
+                  
+                </div>
+                <div id="search-results-container">
+                  <ul id="search-results"></ul>
+                </div>
+              </div>
+            </form>
+              <div class="navbar-right ">
+                <ul class="nav navbar-nav">
+                  <!-- Github Link Button -->
+                  <li style="padding-left: 20px;" class="github-link mr-3">
+                    <a class="btn btn-outline-secondary btn-sm" routerLink ="/login">
+                      <span class="d-none d-md-inline-block mr-2">Sing In</span>
+                      <i class="fas fa-sign-in-alt"></i>
+                    </a>
+
+                  </li>
+                  <li *ngIf="this.slm.islogin == true && this.role != 'Client'   " class="dropdown notifications-menu">
+                    <a class="btn btn-sm btn-success text-white pull-right" (click)="addproduit()">
+                      <i class="fa fa-plus"></i>Ajouter Produit </a>
+</li>                
+                  <!-- User Account -->
+                  <li *ngIf="this.slm.islogin == true " class="dropdown user-menu">
+                    <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                      <span class="d-none d-lg-inline-block">{{this.name}}</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <!-- User image -->
+                      <li class="dropdown-header">
+                        <div class="d-inline-block">
+                          {{this.name}} <small class="pt-1">{{this.email}}</small>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a routerLink ="/profil" routerLinkActive="active">
+                          <i class="mdi mdi-account"></i> My Profile
+                        </a>
+                      </li>
+                      <li class="dropdown-footer">
+                        <a  (click)="zelzel()"> <i class="mdi mdi-logout"></i> Log Out </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <a *ngIf="this.slm.islogin == true " class="btn btn-success btn-sm ml-3"
+              routerLink ="/acceuil" routerLinkActive="active" >
+                <i class="fa fa-shopping-cart"></i> Panier
+                <span class="badge badge-light">{{this.crudApi.q}}</span>
+            </a>
+            
+            <a *ngIf="this.slm.islogin == true && this.role == 'Admin' " class="btn btn-success btn-sm ml-3"
+              routerLink ="/listproduit" routerLinkActive="active" 
+              (click)="coucou()">
+              <i class="fa fa-bell"></i> Notification
+                <span class="badge badge-light">{{this.crudApi.n}}</span>
+            </a>
+         
+            </nav>
+
+
+          </header>
+
+          <div class="container d-flex justify-content-center mt-50 mb-50" *ngIf="this.ps == 'A' && this.azerty != 'A'">
+            <div class="row">
+                <div class="col-md-4 mt-2"  *ngFor="let item of this.crudApi.produitList ">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-img-actions" *ngIf="item.statut == 'true'"> 
+                              <img class="card-img-top img-responsive" 
+                              src = "{{this.crudApi.host+'/api/Imgproduit/'+item.id}}" 
+                              style="    width: 50%;
+                              height: 50%;"
+                             alt="">  
+                            </div>
+                        </div>
+                        <div class="card-body bg-light text-center" *ngIf="item.statut == 'true'">
+                            <div class="mb-2">
+                                <h3 class="font-weight-semibold mb-2"><a href="#" class="text-default mb-2" data-abc="true"> {{item.nom}} </a></h3> <a  class="text-muted" data-abc="true"> {{item.categorie}}</a>
+                            </div>
+                            <h3 class="mb-0 font-weight-semibold">{{item.prix}} DT</h3>
+                            <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>
+                           <button type="button" class="btn bg-cart" (click) = "addat(item)"><i class="fa fa-cart-plus mr-2"></i> Ajouter au Panier </button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+               
+            </div>
+          </div>
+
+          <div class="container d-flex justify-content-center mt-50 mb-50" *ngIf="this.ps == 'B'">
+            <div class="row">
+                <div class="col-md-4 mt-2"  *ngFor="let item of this.prodList ">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-img-actions" *ngIf="item.statut == 'true'"> 
+                              <img class="card-img-top img-responsive" 
+                              src = "{{this.crudApi.host+'/api/Imgproduit/'+item.id}}" 
+                              style="    width: 50%;
+                              height: 50%;"
+                             alt="">  
+                            </div>
+                        </div>
+                        <div class="card-body bg-light text-center" *ngIf="item.statut == 'true'">
+                            <div class="mb-2">
+                              <h3 class="font-weight-semibold mb-2"><a href="#" class="text-default mb-2" data-abc="true"> {{item.nom}} </a></h3> <a  class="text-muted" data-abc="true"> {{item.categorie}}</a>
+                            </div>
+                            <h3 class="mb-0 font-weight-semibold">{{item.prix}} DT</h3>
+                            <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>
+                           <button type="button" class="btn bg-cart" (click) = "addat(item)"><i class="fa fa-cart-plus mr-2"></i> Ajouter au Panier </button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+               
+            </div>
+          </div>
+     
+          <div class="container d-flex justify-content-center mt-50 mb-50" *ngIf="this.ps == 'C' ">
+            <div class="row">
+                <div class="col-md-4 mt-2"  *ngFor="let item of this.proList ">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-img-actions" *ngIf="item.statut == 'true'"> 
+                              <img class="card-img-top img-responsive" 
+                              src = "{{this.crudApi.host+'/api/Imgproduit/'+item.id}}" 
+                              style="    width: 50%;
+                              height: 50%;"
+                             alt="">  
+                            </div>
+                        </div>
+                        <div class="card-body bg-light text-center" *ngIf="item.statut == 'true'">
+                            <div class="mb-2">
+                              <h3 class="font-weight-semibold mb-2"><a href="#" class="text-default mb-2" data-abc="true"> {{item.nom}} </a></h3> <a  class="text-muted" data-abc="true"> {{item.categorie}}</a>
+                            </div>
+                            <h3 class="mb-0 font-weight-semibold">{{item.prix}} DT</h3>
+                            <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>
+                           <button type="button" class="btn bg-cart" (click) = "addat(item)"><i class="fa fa-cart-plus mr-2"></i> Ajouter au Panier </button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+               
+            </div>
+          </div>
+   
+	
+<div class="Container" *ngIf="this.azerty == 'A'" >
+
+  <ngb-carousel >
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[0]" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[1]" alt="Random second slide">
+      </div> 
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[2]" alt="Random third slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <button type="button" class="btn btn-outline-dark ml-1" (click)="closepub()" ><i class="fa fa-close"></i> Close</button>
+</div>
+
+
+
+
+
+
+
+
+						</div>
+
+			
+		
+						</div>
+
+				
+						
+							
+
+
+  </body>
+</html>
