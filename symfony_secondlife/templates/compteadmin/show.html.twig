@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compteadmin{% endblock %}
+
+{% block body %}
+    <h1>Compteadmin</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idcompteadmin</th>
+                <td>{{ compteadmin.idcompteadmin }}</td>
+            </tr>
+            <tr>
+                <th>Descriptiontache</th>
+                <td>{{ compteadmin.descriptiontache }}</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>
+                <a href="{{ path('compteadmin_index') }}" class="btn btn-filters active">back to list</a>
+
+                <a href="{{ path('compteadmin_edit', {'idcompteadmin': compteadmin.idcompteadmin}) }} " class="btn btn-filters active">edit</a>
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}

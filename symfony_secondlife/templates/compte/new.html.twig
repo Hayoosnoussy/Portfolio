@@ -1,0 +1,8 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}New Compte{% endblock %}
+{% block body %}
+
+            {{ include('compte/_form.html.twig') }}
+            <a href="{{ path('compte_index') }}"  class="btn btn-filters active">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Compteadmin index{% endblock %}
+
+{% block body %}
+    <h1>Compteadmin index</h1>
+</br>
+    <a href="{{ path('compteadmin_new') }}" class="btn btn-success mb-2">Create new</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcompteadmin</th>
+                <th>Descriptiontache</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compteadmin in compteadmins %}
+            <tr>
+                <td>{{ compteadmin.idcompteadmin }}</td>
+                <td>{{ compteadmin.descriptiontache }}</td>
+                <td>
+                    <a href="{{ path('compteadmin_show', {'idcompteadmin': compteadmin.idcompteadmin}) }}" class="btn btn-primary mb-2">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('compteadmin_edit', {'idcompteadmin': compteadmin.idcompteadmin}) }}"class="btn btn-primary mb-2">edit</a>
+                </td>
+
+                <td>
+                    {{ include('compteadmin/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

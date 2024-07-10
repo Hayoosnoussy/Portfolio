@@ -1,0 +1,44 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Comptecoach index{% endblock %}
+
+{% block body %}
+    <h1>Comptecoach index</h1>
+</br>
+    <a href="{{ path('comptecoach_new') }}"class="btn btn-success mb-2">Create new</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcomptecoach</th>
+                <th>Prixheure</th>
+                <th>Valide</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comptecoach in comptecoaches %}
+            <tr>
+                <td>{{ comptecoach.idcomptecoach }}</td>
+                <td>{{ comptecoach.prixheure }}</td>
+                <td>{{ comptecoach.valide ? 'Yes' : 'No' }} /td>
+                <td>
+                    <a href="{{ path('comptecoach_show', {'idcomptecoach': comptecoach.idcomptecoach}) }}"  class="btn btn-primary mb-2">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('comptecoach_edit', {'idcomptecoach': comptecoach.idcomptecoach}) }}"  class="btn btn-primary mb-2">edit</a>
+                </td>
+
+                <td>
+                    {{ include('comptecoach/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

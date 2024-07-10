@@ -1,0 +1,36 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Comptecoach{% endblock %}
+
+{% block body %}
+    <h1>Comptecoach</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idcomptecoach</th>
+                <td>{{ comptecoach.idcomptecoach }}</td>
+            </tr>
+            <tr>
+                <th>Prixheure</th>
+                <td>{{ comptecoach.prixheure }}</td>
+            </tr>
+            <tr>
+                <th>Valide</th>
+                <td>{{ comptecoach.valide ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>
+                <a href="{{ path('comptecoach_index') }}" class="btn btn-filters active">back to list</a>
+
+                <a href="{{ path('comptecoach_edit', {'idcomptecoach': comptecoach.idcomptecoach}) }}" class="btn btn-filters active">edit</a>
+            </td>
+            <td>
+                {{ include('comptecoach/_delete_form.html.twig') }}
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorieevent{% endblock %}
+
+{% block body %}
+    <h1>Categorieevent</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Categoriee</th>
+                <td>{{ categorieevent.categoriee }}</td>
+            </tr>
+            <tr>
+                <th>Namecat</th>
+                <td>{{ categorieevent.namecat }}</td>
+            </tr>
+            <tr>
+                <th>Descatevent</th>
+                <td>{{ categorieevent.descatevent }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorieevent_index') }}">back to list</a>
+
+    <a href="{{ path('categorieevent_edit', {'categoriee': categorieevent.categoriee}) }}">edit</a>
+
+    {{ include('categorieevent/_delete_form.html.twig') }}
+{% endblock %}

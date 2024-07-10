@@ -1,0 +1,22 @@
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+
+    <table >
+    <tr>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <tr>
+    {{ form_widget(form) }}
+        </tr>
+        <tr>
+<button class="btn btn-filters active">{{ button_label|default('Save') }}</button>
+        </tr>
+{{ form_end(form) }}
+
+    </tr>
+    </table>
+
+{% endblock %}

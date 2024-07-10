@@ -1,0 +1,40 @@
+<form>
+    <table>
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+        <br>  <br>   <br>  <br>
+        <div class="form-row mb-4">
+
+            <tr>
+                <td>
+
+
+                    <div class="col">
+                        <br>  <br>
+                        {{ form_errors(form.namecat) }}
+                        {{ form_label(form.namecat,"Nom : " )}}
+                        {{ form_row(form.namecat,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                </td><td>
+                    <div class="col">
+
+                        <br>  <br>
+                        {{ form_errors(form.descatevent) }}
+                        {{ form_label(form.descatevent,"Description : " )}}
+                        {{ form_row(form.descatevent,{'attr': {'class': 'form-control'}}) }}
+                </td>
+        </div>
+        </tr>
+
+
+        {{ form_end(form) }}
+
+        </div>
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <input type="submit" name="time" class="mb-4 btn btn-primary">
+
+</form>

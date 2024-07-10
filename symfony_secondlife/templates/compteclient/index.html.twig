@@ -1,0 +1,48 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Compteclient index{% endblock %}
+
+{% block body %}
+    <h1>Compteclient index</h1>
+    </br>
+    <a href="{{ path('compteclient_new') }}" class="btn btn-success mb-2">Create new</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcompteclient</th>
+                <th>Poids</th>
+                <th>Taille</th>
+                <th>Exceptionmedicale</th>
+                <th>Coachlogin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compteclient in compteclients %}
+            <tr>
+                <td>{{ compteclient.idcompteclient }}</td>
+                <td>{{ compteclient.poids }}</td>
+                <td>{{ compteclient.taille }}</td>
+                <td>{{ compteclient.exceptionmedicale }}</td>
+                <td>{{ compteclient.coachlogin }}</td>
+                <td>
+                    <a href="{{ path('compteclient_show', {'idcompteclient': compteclient.idcompteclient}) }}" class="btn btn-primary mb-2">show</a>
+
+                </td>
+                <td>
+                    <a href="{{ path('compteclient_edit', {'idcompteclient': compteclient.idcompteclient}) }}"  class="btn btn-primary mb-2">edit</a>
+                </td>
+                <td>
+                    {{ include('compteclient/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

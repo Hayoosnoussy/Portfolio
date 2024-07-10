@@ -1,0 +1,11 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}New Compteclient{% endblock %}
+
+{% block body %}
+    <h1>Create new Compteclient</h1>
+
+    {{ include('compteclient/_form.html.twig') }}
+
+    <a href="{{ path('compteclient_index') }}" class="btn btn-filters active">back to list</a>
+{% endblock %}

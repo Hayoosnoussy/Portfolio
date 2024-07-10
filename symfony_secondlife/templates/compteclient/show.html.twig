@@ -1,0 +1,42 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Compteclient{% endblock %}
+
+{% block body %}
+    <h1>Compteclient</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idcompteclient</th>
+                <td>{{ compteclient.idcompteclient }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ compteclient.poids }}</td>
+            </tr>
+            <tr>
+                <th>Taille</th>
+                <td>{{ compteclient.taille }}</td>
+            </tr>
+            <tr>
+                <th>Exceptionmedicale</th>
+                <td>{{ compteclient.exceptionmedicale }}</td>
+            </tr>
+            <tr>
+                <th>Coachlogin</th>
+                <td>{{ compteclient.coachlogin }}</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>
+                <a href="{{ path('compteclient_index') }}" class="btn btn-filters active">back to list</a>
+
+                <a href="{{ path('compteclient_edit', {'idcompteclient': compteclient.idcompteclient}) }}" class="btn btn-filters active">edit</a>
+            </td>
+
+        </tr>
+    </table>
+
+
+{% endblock %}

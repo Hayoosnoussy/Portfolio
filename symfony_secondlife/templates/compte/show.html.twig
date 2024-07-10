@@ -1,0 +1,70 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+    <h1>Compte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idcompte</th>
+                <td>{{ compte.idcompte }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ compte.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ compte.password }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ compte.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ compte.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ compte.age }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ compte.telephone }}</td>
+            </tr>
+
+            <tr>
+                <th>Aboutme</th>
+                <td>{{ compte.aboutme }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ compte.ville }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ compte.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Isclosed</th>
+                <td>{{ compte.isclosed ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ compte.email }}</td>
+            </tr>
+
+        </tbody>
+        <tr>
+            <td>
+                <a href="{{ path('compte_index') }}"class="btn btn-filters active">back to list</a>
+                <a href="{{ path('compte_edit', {'idcompte': compte.idcompte}) }}" class="btn btn-filters active">edit</a>
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Compte index{% endblock %}
+
+{% block body %}
+    <h1>Compte index</h1>
+    </br>
+    <a href="{{ path('compte_new') }}" class="btn btn-success mb-2" >Create new</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcompte</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Age</th>
+                <th>Telephone</th>
+                <th>Aboutme</th>
+                <th>Ville</th>
+                <th>Adresse</th>
+                <th>Isclosed</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compte in comptes %}
+            <tr>
+                <td>{{ compte.idcompte }}</td>
+                <td>{{ compte.login }}</td>
+                <td>{{ compte.password }}</td>
+                <td>{{ compte.nom }}</td>
+                <td>{{ compte.prenom }}</td>
+                <td>{{ compte.age }}</td>
+                <td>{{ compte.telephone }}</td>
+                <td>{{ compte.aboutme }}</td>
+                <td>{{ compte.ville }}</td>
+                <td>{{ compte.adresse }}</td>
+                <td>{{ compte.isclosed ? 'Yes' : 'No' }}</td>
+                <td>{{ compte.email }}</td>
+                <td>
+                    <a href="{{ path('compte_show', {'idcompte': compte.idcompte}) }} " class="btn btn-primary mb-2">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('compte_edit', {'idcompte': compte.idcompte}) }}" class="btn btn-primary mb-2">edit</a>
+                </td>
+                <td>
+                {{ include('compte/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

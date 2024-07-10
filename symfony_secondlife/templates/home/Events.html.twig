@@ -1,0 +1,67 @@
+{% extends 'Client.html.twig' %}
+{% block content %}
+    <!--begin Content-->
+        <article>
+            <h1 style="color: #858585; text-align: center"> List des Evénement  </h1>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9" id="content">
+                        {% include 'home/content.html.twig' with {Event:Event} only %}
+
+                        <div class="navigation">
+                            {{ knp_pagination_render(Event) }}
+                        </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sidebar">
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="search" class="sr-only">Search</label><i class="fa fa-search">
+                                    <input id="search" type="text" placeholder="Search" class="form-control"></i>
+                            </div>
+                        </form>
+                        <h4>Categories</h4>
+                        <ul class="categories">
+                            {% for C in Categorieevent %}
+                            <li><a href="#"><i class="fa fa-angle-right"></i>{{ C.namecat }}</a></li>
+                            {% endfor %}
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </article>
+    <script>
+        <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js') }}">
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+
+            $('#search').keyup(function(e){
+                var value = $(this).val();
+                $.ajax({
+                    url : "http://127.0.0.1:8000/Actualites/Events?search="+value,
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour){
+                        if(retour){
+                            $('#t div').empty();
+                            console.log(retour.retour)
+                            $('#content').html(retour.retour);
+
+                        }
+
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+{% endblock  %}
