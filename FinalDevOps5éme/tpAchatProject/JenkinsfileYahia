@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+    tools {
+        maven 'M2_HOME'
+        jdk 'JAVA_HOME'
+    }
+ 
+     
+    stages {
+       stage ('SCM CHECKOUT') {
+    steps {
+      git branch: 'Yahia_ModuleFornisseur', url: 'https://github.com/yassinedarwezi/DevOps.git' }}
+      stage('Maven Version'){
+            steps {
+                sh 'mvn -version'
+            }
+        }
+	 stage('compile'){
+            steps {
+                sh 'mvn compile -e'
+            }
+        }
+	
+	
+        
+        stage('Maven Package') {
+             steps {
+                sh 'mvn clean package -DskipTests'
+            
+            }
+        }
+	
+	
+	 stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+      
+	stage('test'){
+            steps {
+                sh 'mvn test'
+            }
+	    }
+	    
+	        
+	    
+          stage("sonar"){
+        steps {
+                withSonarQubeEnv ( installationName: 'SonarQube-8.9.7'){
+                sh 'mvn sonar:sonar'
+		}
+        }
+        }  
+        
+
+        
+	
+
+    }
+}
